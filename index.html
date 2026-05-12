@@ -289,7 +289,7 @@
             margin-top: 0.5rem;
         }
 
-        /* KONTAKT (bez jazdy próbnej) */
+        /* KONTAKT */
         .contact-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -346,6 +346,11 @@
             color: var(--blue-primary);
             font-size: 1.3rem;
             transition: 0.2s;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            background: var(--blue-primary);
+            color: white;
         }
         .hours-column {
             background: #eef2fc;
@@ -409,7 +414,7 @@
 </header>
 
 <main>
-    <!-- SEKCJA GŁÓWNA / HOME z mapą i opiniami -->
+    <!-- SEKCJA GŁÓWNA / HOME -->
     <section id="home" class="section">
         <div class="hero">
             <div class="hero-grid">
@@ -435,7 +440,6 @@
                     <div class="info-row"><i class="far fa-calendar-alt"></i> 
                         <div><strong>Godziny otwarcia:</strong></div>
                     </div>
-                    <!-- GODZINY ROZPISANE W KOLUMNIE -->
                     <div class="hours-column">
                         <p><span>Poniedziałek – Piątek:</span> <strong>8:00 – 16:00</strong></p>
                         <p><span>Sobota – Niedziela:</span> <strong>10:00 – 14:00</strong></p>
@@ -457,7 +461,7 @@
         </div>
     </section>
 
-    <!-- OFERTA – tylko kategoria B, bez szybkiego kursu, z książką i testami -->
+    <!-- OFERTA -->
     <section id="offer" class="section">
         <h2 class="section-title">Nasza oferta</h2>
         <p class="section-sub">Kompleksowy kurs prawa jazdy kategorii B – profesjonalnie i bez stresu.</p>
@@ -476,7 +480,7 @@
                 <div class="price-tag">od 2490 zł</div>
                 <div class="small-note">Możliwość rozłożenia na raty 0%</div>
             </div>
-            <!-- Jazdy doszkalające – brak ceny, tylko info że w razie potrzeby -->
+            <!-- Jazdy doszkalające -->
             <div class="offer-card">
                 <i class="fas fa-sync-alt"></i>
                 <h3>Jazdy doszkalające</h3>
@@ -494,7 +498,7 @@
         </div>
     </section>
 
-    <!-- KONTAKT I FORMUŁARZ – usunięta wzmianka o jeździe próbnej, zmieniony email -->
+    <!-- KONTAKT I FORMULARZ -->
     <section id="contact" class="section">
         <h2 class="section-title">Kontakt i zapisy</h2>
         <p class="section-sub">Masz pytania? Wypełnij formularz – oddzwonimy, aby omówić szczegóły kursu.</p>
@@ -503,18 +507,18 @@
                 <div class="info-row"><i class="fas fa-map-marker-alt"></i> aleja Tysiąclecia 12 (wjazd od Harcerskiej), 06-100 Pułtusk</div>
                 <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
                 <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
-                <!-- godziny pracy w kolumnie tutaj też dla przejrzystości -->
+                <!-- godziny pracy -->
                 <div class="hours-column" style="margin-top: 0.8rem;">
                     <p><span><i class="far fa-clock"></i> Poniedziałek – Piątek:</span> <strong>8:00 – 16:00</strong></p>
                     <p><span><i class="far fa-clock"></i> Sobota – Niedziela:</span> <strong>10:00 – 14:00</strong></p>
                 </div>
+                <!-- SOCIAL MEDIA Z WŁAŚCIWYMI LINKAMI -->
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/oskkmMariuszKowalewski/?locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/prawkopultusk/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div style="margin-top: 1rem;">
-                    <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="#" style="color:#1363df;">Google Maps – zobacz trasę</a>
+                    <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="https://www.google.com/search?client=opera-gx&hs=W5C&sca_esv=d53d5347ff8bc94c&sxsrf=ANbL-n4C4Of7KsQ-eOd_c_42j4s94XS5dQ:1778593403780&q=Nauka+Jazdy+Mariusz+Kowalewski+Pu%C5%82tusk" target="_blank" style="color:#1363df;">Google Maps – zobacz trasę</a>
                 </div>
             </div>
             <div class="contact-form">
@@ -554,7 +558,7 @@
         });
     }
 
-    // smooth scroll + active link highlight (dla 2 sekcji)
+    // smooth scroll + active link highlight
     const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-item');
     window.addEventListener('scroll', () => {
