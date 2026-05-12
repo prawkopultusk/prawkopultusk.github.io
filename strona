@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Prawko Pułtusk | Nauka Jazdy Mariusz Kowalewski</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Lightbox do galerii -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f6fe;
+            color: #0a2b3e;
+            scroll-behavior: smooth;
+        }
+
+        /* kolorystyka niebieska */
+        :root {
+            --blue-deep: #0a2b4e;
+            --blue-primary: #1363df;
+            --blue-ocean: #1e88e5;
+            --blue-sky: #64b5f6;
+            --blue-pale: #e3f2fd;
+            --white: #ffffff;
+            --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* nawigacja */
+        header {
+            background: rgba(10, 43, 78, 0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid rgba(100, 181, 246, 0.3);
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo h2 {
+            color: white;
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: -0.3px;
+        }
+        .logo span {
+            color: var(--blue-sky);
+            font-weight: 400;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #f0f9ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--blue-sky);
+            border-bottom: 2px solid var(--blue-sky);
+            padding-bottom: 5px;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* sekcje */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--blue-deep);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--blue-primary);
+            border-radius: 4px;
+        }
+        .section-sub {
+            color: #2c5a7a;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* HERO + wizytówka Google */
+        .hero {
+            background: linear-gradient(135deg, #eef5ff 0%, #d9eaff 100%);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--blue-deep);
+            margin-bottom: 0.5rem;
+        }
+        .hero-text h1 span {
+            color: var(--blue-primary);
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            margin: 1rem 0;
+            color: #1f4a6e;
+        }
+        .btn-group {
+            margin-top: 1.5rem;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--blue-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 1rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--blue-primary);
+            color: var(--blue-primary);
+        }
+        .btn-outline:hover {
+            background: var(--blue-primary);
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 18px -8px rgba(19, 99, 223, 0.4);
+        }
+
+        /* KARTA GOOGLE */
+        .google-card {
+            flex: 1;
+            background: white;
+            border-radius: 28px;
+            padding: 1.3rem;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(30, 136, 229, 0.2);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            border-bottom: 1px solid #eef2ff;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .card-header i {
+            font-size: 2rem;
+            color: #1e88e5;
+        }
+        .stars {
+            color: #f9b81b;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        .opinions {
+            font-weight: 600;
+            color: #0a2b4e;
+        }
+        .info-row {
+            display: flex;
+            gap: 1rem;
+            margin: 0.8rem 0;
+            align-items: center;
+        }
+        .info-row i {
+            width: 26px;
+            color: var(--blue-primary);
+        }
+        .hours {
+            background: #eef3fc;
+            padding: 0.7rem;
+            border-radius: 18px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .map-link {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+        .map-link a {
+            color: var(--blue-primary);
+            word-break: break-all;
+        }
+
+        /* GALERIA */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        .gallery-item {
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+            background: white;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.4s;
+            display: block;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+        .gallery-caption {
+            padding: 0.8rem;
+            text-align: center;
+            background: white;
+            font-weight: 500;
+            color: var(--blue-deep);
+        }
+
+        /* OFERTA */
+        .offers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .offer-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem 1.5rem;
+            flex: 1;
+            min-width: 220px;
+            text-align: center;
+            transition: 0.2s;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--blue-ocean);
+        }
+        .offer-card i {
+            font-size: 2.8rem;
+            color: var(--blue-primary);
+            margin-bottom: 1rem;
+        }
+        .offer-card h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.5rem;
+        }
+        .price {
+            font-weight: 800;
+            color: var(--blue-deep);
+            margin: 0.8rem 0;
+        }
+
+        /* KONTAKT + FORMUŁARZ */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-form {
+            flex: 1;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 1.5rem;
+            border: 1px solid #cbdff2;
+            font-family: inherit;
+            background: #fafdff;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--blue-primary);
+            box-shadow: 0 0 0 3px rgba(30,136,229,0.2);
+        }
+        button[type="submit"] {
+            background: var(--blue-primary);
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .social-icons {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 1.2rem;
+        }
+        .social-icons a {
+            background: #eef2ff;
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--blue-primary);
+            font-size: 1.3rem;
+            transition: 0.2s;
+        }
+
+        footer {
+            background: var(--blue-deep);
+            color: #cdedff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <h2>Prawko Pułtusk <span>| Mariusz Kowalewski</span></h2>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="active nav-item">Strona główna</a></li>
+            <li><a href="#gallery" class="nav-item">Galeria</a></li>
+            <li><a href="#offer" class="nav-item">Oferta</a></li>
+            <li><a href="#contact" class="nav-item">Kontakt</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <!-- SEKCJA GŁÓWNA / HOME z mapą Google i opiniami -->
+    <section id="home" class="section">
+        <div class="hero">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1><span>Prawko Pułtusk</span> – zdaj za pierwszym razem!</h1>
+                    <p><strong>✧ Zobacz zdjęcia ✧</strong> – nowoczesne samochody, profesjonalni instruktorzy, komfortowa nauka jazdy w Pułtusku. Sprawdź naszą galerię i przekonaj się, dlaczego kursanci nas wybierają.</p>
+                    <div class="btn-group">
+                        <a href="#gallery" class="btn">📸 Zobacz zdjęcia</a>
+                        <a href="#contact" class="btn btn-outline">📞 Zapisz się na kurs</a>
+                    </div>
+                </div>
+                <div class="google-card">
+                    <div class="card-header">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div><strong>Nauka Jazdy Mariusz Kowalewski</strong><br>Pułtusk</div>
+                    </div>
+                    <div class="stars">
+                        ★★★★★ <span class="opinions">5,099 opinii</span>
+                    </div>
+                    <div class="info-row"><i class="fas fa-tag"></i> Ośrodek szkolenia kierowców</div>
+                    <div class="info-row"><i class="fas fa-map-pin"></i> Wjazd od ul. Harcerskiej, aleja Tysiąclecia 12, 06-100 Pułtusk</div>
+                    <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
+                    <div class="info-row"><i class="far fa-clock"></i> <div><strong>Godziny:</strong> Wkrótce zamknięcie · 16:00 · Otwarcie: śr., 08:00</div></div>
+                    <div class="hours">
+                        <i class="fas fa-globe"></i> <strong>Zobacz z zewnątrz</strong> — nowoczesna siedziba w Pułtusku, parking dla kursantów.
+                    </div>
+                    <div class="map-link">
+                        📍 <a href="https://www.google.com/search?client=opera-gx&hs=W5C&sca_esv=d53d5347ff8bc94c&sxsrf=ANbL-n4C4Of7KsQ-eOd_c_42j4s94XS5dQ:1778593403780&q=Nauka+Jazdy+Mariusz+Kowalewski+Pu%C5%82tusk" target="_blank">Sprawdź w Google Maps → Trasa · Opinie · Zapisz · Udostępnij · Zadzwoń</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- dodatkowe info -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; background: #eaf4ff; border-radius: 1.8rem; padding: 1rem 2rem; margin-top: 1.2rem;">
+            <span><i class="fas fa-check-circle" style="color:#1363df;"></i> Ponad 5000 zadowolonych kursantów</span>
+            <span><i class="fas fa-car"></i> Nowoczesny tabor (hybrydy, klimatyzacja)</span>
+            <span><i class="fas fa-chalkboard-user"></i> Jazdy doszkalające i egzaminy wewnętrzne</span>
+        </div>
+    </section>
+
+    <!-- GALERIA ZDJĘĆ -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Galeria zdjęć</h2>
+        <p class="section-sub">Zobacz naszą flotę, nowoczesne sale wykładowe oraz uśmiechniętych kursantów na drodze.</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <a href="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600" data-lightbox="gallery" data-title="Nowoczesne auto szkoleniowe z podwójnym sterowaniem">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=450&fit=crop" alt="Samochód do nauki jazdy">
+                </a>
+                <div class="gallery-caption">Auto z podwójnym sterowaniem</div>
+            </div>
+            <div class="gallery-item">
+                <a href="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600" data-lightbox="gallery" data-title="Zajęcia praktyczne na miasteczku">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&h=450&fit=crop" alt="Jazda praktyczna">
+                </a>
+                <div class="gallery-caption">Profesjonalny instruktor</div>
+            </div>
+            <div class="gallery-item">
+                <a href="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=600" data-lightbox="gallery" data-title="Nowoczesne wnętrze sali wykładowej">
+                    <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=600&h=450&fit=crop" alt="Sala wykładowa">
+                </a>
+                <div class="gallery-caption">Teoria w nowoczesnej sali</div>
+            </div>
+            <div class="gallery-item">
+                <a href="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=600" data-lightbox="gallery" data-title="Grupa kursantów z instruktorem">
+                    <img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=600&h=450&fit=crop" alt="Kursanci">
+                </a>
+                <div class="gallery-caption">Przyjazna atmosfera</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section id="offer" class="section">
+        <h2 class="section-title">Nasza oferta</h2>
+        <p class="section-sub">Kompleksowe kursy na prawo jazdy kategorii B, A, oraz doszkalanie – dopasujemy program do Ciebie.</p>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <i class="fas fa-id-card"></i>
+                <h3>Kurs podstawowy B</h3>
+                <p>30 h teorii + 30 h praktyki, materiały, wykwalifikowana kadra.</p>
+                <div class="price">od 2490 zł</div>
+            </div>
+            <div class="offer-card">
+                <i class="fas fa-motorcycle"></i>
+                <h3>Prawo jazdy A / A2</h3>
+                <p>Profesjonalne szkolenie na motocykl, bezpieczeństwo i technika.</p>
+                <div class="price">od 1990 zł</div>
+            </div>
+            <div class="offer-card">
+                <i class="fas fa-sync-alt"></i>
+                <h3>Jazdy doszkalające</h3>
+                <p>Indywidualne godziny, egzamin wewnętrzny, elastyczne terminy.</p>
+                <div class="price">120 zł / h</div>
+            </div>
+            <div class="offer-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Kursy intensywne</h3>
+                <p>Zdać w miesiąc! Zajęcia codziennie, szybki kurs z egzaminem.</p>
+                <div class="price">2990 zł</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT I FORMUŁARZ -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Kontakt i zapisy</h2>
+        <p class="section-sub">Skontaktuj się z nami – odpowiemy na wszystkie pytania i umówimy jazdę próbną.</p>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="info-row"><i class="fas fa-map-marker-alt"></i> aleja Tysiąclecia 12 (wjazd od Harcerskiej), 06-100 Pułtusk</div>
+                <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
+                <div class="info-row"><i class="fas fa-envelope"></i> biuro@prawkopultusk.pl</div>
+                <div class="info-row"><i class="far fa-clock"></i> Pon-Pt: 8:00–20:00, Sob: 9:00–14:00</div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <i class="fas fa-map-pin"></i> <strong>Mapa dojazdu:</strong> <a href="#" style="color:#1363df;">Google Maps – zobacz trasę</a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Imię i nazwisko" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Numer telefonu" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Adres e-mail">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" id="message" placeholder="Twoja wiadomość / wybór kursu" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Wyślij wiadomość <i class="fas fa-paper-plane"></i></button>
+                    <p id="formFeedback" style="margin-top: 1rem; font-size: 0.8rem; color: #1363df;"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Prawko Pułtusk – Nauka Jazdy Mariusz Kowalewski | Nowoczesna szkoła jazdy w Pułtusku | Godziny otwarcia: 08:00–20:00</p>
+    <p style="margin-top: 0.6rem; font-size: 0.8rem;"><i class="fas fa-car-side"></i> Ponad 5000 zdanych egzaminów | Dołącz do nas już dziś!</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+<script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    // smooth scroll + active link highlight
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navItems.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // form submission simulation (without actual page reload)
+    const contactForm = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        if (!name || !phone) {
+            feedback.innerHTML = '⚠️ Proszę uzupełnić imię i numer telefonu.';
+            feedback.style.color = '#c62828';
+            return;
+        }
+        feedback.innerHTML = '✅ Dziękujemy! Skontaktujemy się najszybciej jak to możliwe.';
+        feedback.style.color = '#1363df';
+        contactForm.reset();
+        setTimeout(() => { feedback.innerHTML = ''; }, 4000);
+    });
+
+    // dodatkowe: mała interakcja dla przycisku "Zobacz zdjęcia" na wypadek odesłania
+    console.log("Prawko Pułtusk - strona gotowa");
+</script>
+</body>
+</html>
