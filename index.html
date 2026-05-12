@@ -2,20 +2,23 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8"><meta name="google-site-verification" content="7HvbtYWsgtazlj5A8D6pKWtoulLDA2T2ecDyGCR
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Prawko Pułtusk | Nauka Jazdy Mariusz Kowalewski</title>
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231363df'/><text x='50' y='72' font-size='70' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>L</text></svg>">
     <!-- Google Fonts + Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
+        html, body {
             font-family: 'Inter', sans-serif;
             background: #f0f6fe;
             color: #0a2b3e;
             scroll-behavior: smooth;
             -webkit-tap-highlight-color: transparent;
+            width: 100%;
+            overflow-x: hidden;
         }
         :root {
             --blue-deep: #0a2b4e;
@@ -24,36 +27,36 @@
             --blue-sky: #64b5f6;
             --blue-pale: #e3f2fd;
             --white: #ffffff;
-            --shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.12);
         }
 
         /* === HEADER === */
         header {
-            background: rgba(10,43,78,0.97);
+            background: rgba(10,43,78,0.98);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            border-bottom: 1px solid rgba(100,181,246,0.3);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(100,181,246,0.2);
+            width: 100%;
         }
         .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0.8rem 1.2rem;
+            width: 100%;
+            padding: 0.85rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
         }
         .logo-link { text-decoration: none; cursor: pointer; }
-        .logo h2 { color: white; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.3px; }
+        .logo h2 { color: white; font-weight: 700; font-size: 1.2rem; letter-spacing: -0.3px; }
         .logo span { color: var(--blue-sky); font-weight: 400; }
 
         /* === NAWIGACJA === */
         .nav-links {
             display: flex;
-            gap: 1.2rem;
+            gap: 1rem;
             list-style: none;
             align-items: center;
         }
@@ -62,235 +65,255 @@
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
             white-space: nowrap;
         }
         .nav-links a:hover, .nav-links a.active {
             color: var(--blue-sky);
             border-bottom: 2px solid var(--blue-sky);
-            padding-bottom: 4px;
+            padding-bottom: 3px;
         }
         .menu-toggle {
             display: none;
             background: none;
             border: none;
             color: white;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            padding: 8px;
+            padding: 6px;
         }
 
         /* === STRONY === */
-        .page { display: none; animation: fadeIn 0.35s ease; }
+        .page { display: none; animation: fadeIn 0.35s ease; width: 100%; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* === SEKCJE === */
         .section {
-            padding: 3rem 1rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* === TYTUŁY === */
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--blue-deep);
-            position: relative;
-            display: inline-block;
-        }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--blue-primary);
-            border-radius: 4px;
-        }
-        .section-sub {
-            color: #2c5a7a;
-            margin-bottom: 2rem;
-            font-size: 1rem;
+            width: 100%;
+            padding: 0;
         }
 
         /* === HERO === */
         .hero {
-            background: linear-gradient(160deg, #eef5ff 0%, #d9eaff 100%);
-            border-radius: 1.5rem;
-            padding: 3rem 1.2rem;
+            background: linear-gradient(160deg, #eef5ff 0%, #d9eaff 60%, #c4dff5 100%);
+            width: 100%;
+            padding: 3rem 1.5rem;
             text-align: center;
-            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(19,99,223,0.07) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(30,136,229,0.06) 0%, transparent 70%);
+            border-radius: 50%;
         }
         .hero h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--blue-deep);
             margin-bottom: 0.5rem;
             line-height: 1.3;
+            position: relative;
+            z-index: 1;
+            font-weight: 900;
         }
         .hero .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #1a3a6b;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
         .btn-group {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            justify-content: center;
+            flex-direction: column;
+            gap: 0.7rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
         .btn {
-            display: inline-block;
+            display: block;
+            width: 100%;
+            max-width: 320px;
             background: var(--blue-primary);
             color: white;
-            padding: 0.85rem 1.8rem;
+            padding: 1rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 1.05rem;
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            min-width: 200px;
             text-align: center;
+            -webkit-tap-highlight-color: transparent;
         }
         .btn-outline {
             background: transparent;
             border: 2px solid var(--blue-primary);
             color: var(--blue-primary);
+            font-weight: 700;
         }
         .btn-outline:hover { background: var(--blue-primary); color: white; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(19,99,223,0.4); }
-        .btn:active { transform: scale(0.97); }
-
-        /* === OFERTA === */
-        .offers-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-        .offer-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.8rem 1.2rem;
-            flex: 1;
-            min-width: 260px;
-            max-width: 450px;
-            text-align: center;
-            box-shadow: 0 10px 24px -10px rgba(0,0,0,0.1);
-            border-top: 4px solid var(--blue-ocean);
-        }
-        .offer-card i { font-size: 2.4rem; color: var(--blue-primary); margin-bottom: 1rem; }
-        .offer-card h3 { margin: 0.8rem 0; font-size: 1.4rem; }
-        .feature-list {
-            text-align: left;
-            margin: 1.2rem 0;
-            list-style: none;
-        }
-        .feature-list li {
-            margin: 0.7rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-        .feature-list i {
-            font-size: 1.1rem;
-            color: #1363df;
-            width: 22px;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-        .small-note {
-            font-size: 0.85rem;
-            color: #4f6f8f;
-            margin-top: 0.5rem;
-        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -6px rgba(19,99,223,0.4); }
+        .btn:active { transform: scale(0.96); }
 
         /* === O SZKOLE === */
+        .section-header {
+            padding: 2rem 1.5rem 0;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--blue-deep);
+            margin-bottom: 0.4rem;
+        }
+        .section-sub {
+            color: #2c5a7a;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
         .about-box {
             background: white;
-            border-radius: 1.5rem;
-            padding: 1.8rem 1.2rem;
+            padding: 1.5rem;
+            margin: 0 1.5rem 1.5rem;
+            border-radius: 1.2rem;
             box-shadow: var(--shadow);
         }
         .about-box p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         .location-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+            flex-direction: column;
+            gap: 0.8rem;
         }
         .location-card {
             background: #f8fbff;
-            border-radius: 1.2rem;
-            padding: 1.2rem;
-            flex: 1;
-            min-width: 240px;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
             border-left: 4px solid var(--blue-ocean);
         }
         .location-card h4 {
             color: var(--blue-deep);
-            margin-bottom: 0.4rem;
-            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
         }
         .location-card p {
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.1rem;
+            font-size: 0.85rem;
+        }
+
+        /* === OFERTA === */
+        .offers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0 1.5rem 1.5rem;
+        }
+        .offer-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--blue-ocean);
+            width: 100%;
+        }
+        .offer-card i { font-size: 2.2rem; color: var(--blue-primary); margin-bottom: 0.8rem; }
+        .offer-card h3 { margin: 0.6rem 0; font-size: 1.3rem; }
+        .feature-list {
+            text-align: left;
+            margin: 1rem 0;
+            list-style: none;
+        }
+        .feature-list li {
+            margin: 0.6rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .feature-list i {
+            font-size: 1rem;
+            color: #1363df;
+            width: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .small-note { font-size: 0.8rem; color: #4f6f8f; margin-top: 0.3rem; }
+        .info-bar {
+            margin: 0 1.5rem 1.5rem;
+            background: #e3f2fd;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
             font-size: 0.9rem;
         }
 
         /* === KONTAKT === */
         .contact-wrapper {
             display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 1.5rem;
             background: white;
-            border-radius: 1.5rem;
-            padding: 1.8rem 1.2rem;
+            padding: 1.5rem;
+            margin: 0 1.5rem 1.5rem;
+            border-radius: 1.2rem;
             box-shadow: var(--shadow);
         }
-        .contact-info { flex: 1; min-width: 260px; }
-        .contact-form { flex: 1; min-width: 260px; }
+        .contact-info { width: 100%; }
+        .contact-form { width: 100%; }
         .info-row {
             display: flex;
-            gap: 0.8rem;
-            margin: 0.7rem 0;
+            gap: 0.6rem;
+            margin: 0.6rem 0;
             align-items: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-        .info-row i { width: 24px; color: var(--blue-primary); flex-shrink: 0; text-align: center; }
+        .info-row i { width: 22px; color: var(--blue-primary); flex-shrink: 0; text-align: center; }
         .hours-column {
             background: #eef2fc;
-            border-radius: 1rem;
-            padding: 0.9rem 1rem;
-            margin-top: 0.8rem;
+            border-radius: 0.8rem;
+            padding: 0.8rem 1rem;
+            margin-top: 0.6rem;
         }
         .hours-column p {
             display: flex;
             justify-content: space-between;
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
+            margin: 0.4rem 0;
+            font-size: 0.85rem;
             flex-wrap: wrap;
-            gap: 0.3rem;
         }
-        .form-group { margin-bottom: 1rem; }
+        .form-group { margin-bottom: 0.8rem; width: 100%; }
         input, textarea {
             width: 100%;
             padding: 0.85rem 1rem;
-            border-radius: 1.2rem;
+            border-radius: 1rem;
             border: 1px solid #cbdff2;
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 0.95rem;
             background: #fafdff;
             transition: 0.2s;
             -webkit-appearance: none;
@@ -298,7 +321,7 @@
         input:focus, textarea:focus {
             outline: none;
             border-color: var(--blue-primary);
-            box-shadow: 0 0 0 3px rgba(30,136,229,0.15);
+            box-shadow: 0 0 0 3px rgba(30,136,229,0.12);
         }
         button[type="submit"] {
             background: var(--blue-primary);
@@ -306,35 +329,30 @@
             padding: 0.9rem;
             border: none;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: white;
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
         }
-        button[type="submit"]:hover { background: #1055c0; }
-        button[type="submit"]:active { transform: scale(0.97); }
-
+        button[type="submit"]:active { transform: scale(0.96); }
         .social-icons {
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            gap: 0.8rem;
         }
         .social-icons a {
             background: #eef2ff;
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             color: var(--blue-primary);
-            font-size: 1.3rem;
-            transition: 0.2s;
+            font-size: 1.2rem;
             text-decoration: none;
         }
-        .social-icons a:hover { background: var(--blue-primary); color: white; }
 
         /* === STOPKA === */
         footer {
@@ -342,55 +360,43 @@
             color: #cdedff;
             text-align: center;
             padding: 1.5rem 1rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            width: 100%;
         }
 
-        /* ========== RESPONSYWNOŚĆ ========== */
+        /* ========== KOMPUTER ========== */
         @media (min-width: 768px) {
-            .section { padding: 5rem 2rem; }
-            .hero { padding: 4rem 2.5rem; border-radius: 2rem; }
-            .hero h1 { font-size: 2.8rem; }
+            .nav-container { padding: 0.9rem 2rem; max-width: 1200px; margin: 0 auto; }
+            .logo h2 { font-size: 1.5rem; }
+            .nav-links { gap: 1.5rem; }
+            .nav-links a { font-size: 1rem; }
+            .hero { padding: 5rem 3rem; }
+            .hero h1 { font-size: 3rem; max-width: 700px; margin: 0 auto 0.5rem; }
             .hero .subtitle { font-size: 1.2rem; }
-            .section-title { font-size: 2.3rem; }
-            .section-sub { font-size: 1.1rem; }
-            .offer-card { padding: 2rem 1.8rem; }
-            .about-box { padding: 2rem 2.5rem; }
-            .contact-wrapper { padding: 2rem 2.5rem; }
-            .btn { min-width: 220px; }
-        }
-
-        @media (min-width: 1024px) {
-            .hero h1 { font-size: 3.2rem; }
-            .section-title { font-size: 2.5rem; }
-            .offers-grid { gap: 2rem; }
-        }
-
-        @media (max-width: 767px) {
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem 0;
-                gap: 0.6rem;
+            .btn-group { flex-direction: row; justify-content: center; gap: 1rem; }
+            .btn { width: auto; min-width: 220px; }
+            .section-header { padding: 3rem 3rem 0; max-width: 1100px; margin: 0 auto; }
+            .section-title { font-size: 2.2rem; }
+            .section-sub { font-size: 1.05rem; }
+            .about-box { margin: 0 3rem 2rem; padding: 2rem 2.5rem; max-width: 1100px; }
+            .location-row { flex-direction: row; gap: 1.5rem; }
+            .location-card { flex: 1; }
+            .offers-grid {
+                flex-direction: row;
+                padding: 0 3rem 2rem;
+                max-width: 1160px;
+                margin: 0 auto;
+                gap: 1.5rem;
             }
-            .nav-links.show { display: flex; }
-            .menu-toggle { display: block; }
-            .nav-links a {
-                font-size: 1.1rem;
-                padding: 0.6rem;
+            .info-bar { margin: 0 3rem 2rem; max-width: 1100px; }
+            .contact-wrapper {
+                flex-direction: row;
+                margin: 0 3rem 2rem;
+                padding: 2rem 2.5rem;
+                max-width: 1100px;
             }
-            .hero h1 { font-size: 1.6rem; }
-            .hero .subtitle { font-size: 0.95rem; }
-            .section { padding: 2rem 0.8rem; }
-            .section-title { font-size: 1.5rem; }
-            .section-sub { font-size: 0.9rem; margin-bottom: 1.5rem; }
-            .offer-card { min-width: 100%; }
-            .btn { width: 100%; min-width: auto; }
-            .btn-group { flex-direction: column; }
-            .location-row { flex-direction: column; }
-            .contact-wrapper { flex-direction: column; }
-            .hours-column p { flex-direction: column; }
+            .contact-info { flex: 1; }
+            .contact-form { flex: 1; }
         }
     </style>
 </head>
@@ -407,7 +413,7 @@
             <i class="fas fa-bars"></i>
         </button>
         <ul class="nav-links" id="nav-links">
-            <li><a onclick="showPage('home')" class="active nav-link" data-page="home">Strona główna</a></li>
+            <li><a onclick="showPage('home')" class="active nav-link" data-page="home">Główna</a></li>
             <li><a onclick="showPage('oszkole')" class="nav-link" data-page="oszkole">O szkole</a></li>
             <li><a onclick="showPage('oferta')" class="nav-link" data-page="oferta">Oferta</a></li>
             <li><a onclick="showPage('kontakt')" class="nav-link" data-page="kontakt">Kontakt</a></li>
@@ -433,20 +439,22 @@
     <!-- O SZKOLE -->
     <section class="page" id="page-oszkole">
         <div class="section">
-            <h2 class="section-title">O szkole</h2>
-            <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
+            <div class="section-header">
+                <h2 class="section-title">O szkole</h2>
+                <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
+            </div>
             <div class="about-box">
-                <p><strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa na rynku od <strong>2005 roku</strong>, oferuje kursantom najlepsze kształcenie na prawo jazdy kat. B na terenie Pułtuska i okolic. W ośrodku dbam o to, aby kursanci zostali wyszkoleni na dobrych kierowców.</p>
+                <p><strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa od <strong>2005 roku</strong>, oferując najlepsze kształcenie na prawo jazdy kat. B w Pułtusku i okolicach. Dbam o to, by każdy kursant został wyszkolony na dobrego kierowcę.</p>
                 <div class="location-row">
                     <div class="location-card">
-                        <h4><i class="fas fa-building" style="color: var(--blue-primary); margin-right: 0.4rem;"></i> Biuro</h4>
-                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 18px;"></i> Winniczka, ul. Leśna 21</p>
-                        <p style="font-size: 0.8rem; color: #4f6f8f; margin-top: 0.3rem;">Zapisy, formalności, dokumenty</p>
+                        <h4><i class="fas fa-building" style="color: var(--blue-primary); margin-right: 0.3rem;"></i> Biuro</h4>
+                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 16px;"></i> Winniczka, ul. Leśna 21</p>
+                        <p style="font-size: 0.75rem; color: #4f6f8f;">Zapisy, formalności, dokumenty</p>
                     </div>
                     <div class="location-card">
-                        <h4><i class="fas fa-chalkboard-teacher" style="color: var(--blue-primary); margin-right: 0.4rem;"></i> Sala wykładowa</h4>
-                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 18px;"></i> Wjazd od ul. Harcerskiej, al. Tysiąclecia 12</p>
-                        <p style="font-size: 0.8rem; color: #4f6f8f; margin-top: 0.3rem;">Zajęcia teoretyczne, testy wewnętrzne</p>
+                        <h4><i class="fas fa-chalkboard-teacher" style="color: var(--blue-primary); margin-right: 0.3rem;"></i> Sala wykładowa</h4>
+                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 16px;"></i> Wjazd od ul. Harcerskiej, al. Tysiąclecia 12</p>
+                        <p style="font-size: 0.75rem; color: #4f6f8f;">Zajęcia teoretyczne, testy</p>
                     </div>
                 </div>
             </div>
@@ -456,8 +464,10 @@
     <!-- OFERTA -->
     <section class="page" id="page-oferta">
         <div class="section">
-            <h2 class="section-title">Nasza oferta</h2>
-            <p class="section-sub">Kompleksowy kurs prawa jazdy kategorii B – profesjonalnie i bez stresu.</p>
+            <div class="section-header">
+                <h2 class="section-title">Nasza oferta</h2>
+                <p class="section-sub">Kurs prawa jazdy kat. B – profesjonalnie i bez stresu</p>
+            </div>
             <div class="offers-grid">
                 <div class="offer-card">
                     <i class="fas fa-id-card"></i>
@@ -465,8 +475,8 @@
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> 30 godzin teorii</li>
                         <li><i class="fas fa-check-circle"></i> 30 godzin praktyki (jazdy)</li>
-                        <li><i class="fas fa-check-circle"></i> Materiały do nauki części teoretycznej</li>
-                        <li><i class="fas fa-check-circle"></i> Darmowy dostęp do testów online</li>
+                        <li><i class="fas fa-check-circle"></i> Materiały do nauki teorii</li>
+                        <li><i class="fas fa-check-circle"></i> Darmowe testy online</li>
                         <li><i class="fas fa-check-circle"></i> Zajęcia z pierwszej pomocy</li>
                         <li><i class="fas fa-check-circle"></i> Profesjonalni instruktorzy</li>
                         <li><i class="fas fa-check-circle"></i> Egzamin wewnętrzny (próbny WORD)</li>
@@ -476,16 +486,16 @@
                     <i class="fas fa-sync-alt"></i>
                     <h3>Jazdy doszkalające</h3>
                     <ul class="feature-list">
-                        <li><i class="fas fa-hourglass-half"></i> Dodatkowe godziny dla potrzebujących</li>
-                        <li><i class="fas fa-road"></i> Indywidualny program na życzenie</li>
+                        <li><i class="fas fa-hourglass-half"></i> Dodatkowe godziny jazd</li>
+                        <li><i class="fas fa-road"></i> Indywidualny program</li>
                         <li><i class="fas fa-chart-line"></i> Skupienie na słabych punktach</li>
-                        <li><i class="fas fa-book-open"></i> Możliwość korzystania z testów</li>
+                        <li><i class="fas fa-book-open"></i> Dostęp do testów</li>
                     </ul>
                     <div class="small-note">Do uzgodnienia indywidualnie</div>
                 </div>
             </div>
-            <div style="margin-top: 1.5rem; background: #e3f2fd; border-radius: 1.2rem; padding: 1rem; text-align: center;">
-                <i class="fas fa-graduation-cap" style="color:#1363df;"></i> <strong>Każdy kursant otrzymuje książkę i dostęp do testów on-line!</strong>
+            <div class="info-bar">
+                <i class="fas fa-graduation-cap" style="color:#1363df;"></i> <strong>Każdy kursant otrzymuje książkę i testy on-line!</strong>
             </div>
         </div>
     </section>
@@ -493,11 +503,13 @@
     <!-- KONTAKT -->
     <section class="page" id="page-kontakt">
         <div class="section">
-            <h2 class="section-title">Kontakt i zapisy</h2>
-            <p class="section-sub">Masz pytania? Wypełnij formularz – oddzwonimy.</p>
+            <div class="section-header">
+                <h2 class="section-title">Kontakt i zapisy</h2>
+                <p class="section-sub">Wypełnij formularz – oddzwonimy</p>
+            </div>
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <div class="info-row"><i class="fas fa-map-marker-alt"></i> al. Tysiąclecia 12, 06-100 Pułtusk</div>
+                    <div class="info-row"><i class="fas fa-map-marker-alt"></i> al. Tysiąclecia 12, Pułtusk</div>
                     <div class="info-row"><i class="fas fa-phone-alt"></i> <a href="tel:512103512" style="color:#0a2b3e; text-decoration:none; font-weight:600;">512 103 512</a></div>
                     <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
                     <div class="hours-column">
@@ -505,11 +517,11 @@
                         <p><span><i class="far fa-clock"></i> Sb – Nd:</span> <strong>10:00 – 14:00</strong></p>
                     </div>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/oskkmMariuszKowalewski/?locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/prawkopultusk/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/oskkmMariuszKowalewski/?locale=pl_PL" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/prawkopultusk/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
                     </div>
-                    <div style="margin-top: 1rem;">
-                        <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="https://www.google.com/search?q=Nauka+Jazdy+Mariusz+Kowalewski+Pu%C5%82tusk" target="_blank" style="color:#1363df;">Google Maps</a>
+                    <div style="margin-top: 0.8rem; font-size: 0.85rem;">
+                        <i class="fas fa-map-pin"></i> <a href="https://maps.google.com/?q=Nauka+Jazdy+Mariusz+Kowalewski+Pułtusk" target="_blank" style="color:#1363df;">Google Maps – zobacz trasę</a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -522,7 +534,7 @@
                         <div class="form-group"><input type="email" name="email" id="email" placeholder="Adres e-mail"></div>
                         <div class="form-group"><textarea rows="4" name="message" id="message" placeholder="Twoja wiadomość" required></textarea></div>
                         <button type="submit">Wyślij wiadomość <i class="fas fa-paper-plane"></i></button>
-                        <p id="formFeedback" style="margin-top: 0.8rem; font-size: 0.85rem; color: #1363df; text-align: center;"></p>
+                        <p id="formFeedback" style="margin-top: 0.6rem; font-size: 0.8rem; color: #1363df; text-align: center;"></p>
                     </form>
                 </div>
             </div>
@@ -535,7 +547,6 @@
 </footer>
 
 <script>
-    // === PRZEŁĄCZANIE STRON ===
     function showPage(pageName) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('page-' + pageName).classList.add('active');
@@ -546,19 +557,16 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // === MOBILE MENU ===
-    const mobileBtn = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
-    mobileBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
+    document.getElementById('mobile-menu').addEventListener('click', () => {
+        document.getElementById('nav-links').classList.toggle('show');
+    });
 
-    // Zamykanie menu po kliknięciu poza nim
     document.addEventListener('click', (e) => {
         if (!e.target.closest('#nav-links') && !e.target.closest('#mobile-menu')) {
-            navLinks.classList.remove('show');
+            document.getElementById('nav-links').classList.remove('show');
         }
     });
 
-    // === FORMULARZ Web3Forms ===
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
     contactForm.addEventListener('submit', async (e) => {
@@ -566,28 +574,22 @@
         const name = document.getElementById('name').value.trim();
         const phone = document.getElementById('phone').value.trim();
         if (!name || !phone) {
-            feedback.innerHTML = '⚠️ Proszę uzupełnić imię i numer telefonu.';
+            feedback.innerHTML = '⚠️ Uzupełnij imię i numer telefonu.';
             feedback.style.color = '#c62828';
             return;
         }
         feedback.innerHTML = '⏳ Wysyłanie...';
         feedback.style.color = '#1363df';
-
         try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: new FormData(contactForm)
-            });
+            const response = await fetch(contactForm.action, { method: 'POST', body: new FormData(contactForm) });
             const result = await response.json();
             if (result.success) {
                 feedback.innerHTML = '✅ Dziękujemy! Skontaktujemy się wkrótce.';
                 feedback.style.color = '#22c55e';
                 contactForm.reset();
-            } else {
-                throw new Error('Błąd');
-            }
+            } else throw new Error('Błąd');
         } catch (error) {
-            feedback.innerHTML = '❌ Błąd wysyłania. Zadzwoń: 512 103 512';
+            feedback.innerHTML = '❌ Błąd. Zadzwoń: 512 103 512';
             feedback.style.color = '#c62828';
         }
         setTimeout(() => { feedback.innerHTML = ''; }, 5000);
