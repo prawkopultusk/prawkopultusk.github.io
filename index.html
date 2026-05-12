@@ -7,8 +7,6 @@
     <!-- Google Fonts + Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Lightbox do galerii -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -235,39 +233,7 @@
             word-break: break-all;
         }
 
-        /* GALERIA */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin-top: 2rem;
-        }
-        .gallery-item {
-            border-radius: 2rem;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: 0.3s ease;
-            background: white;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: 0.4s;
-            display: block;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.03);
-        }
-        .gallery-caption {
-            padding: 0.8rem;
-            text-align: center;
-            background: white;
-            font-weight: 500;
-            color: var(--blue-deep);
-        }
-
-        /* OFERTA */
+        /* OFERTA - tylko kat B */
         .offers-grid {
             display: flex;
             flex-wrap: wrap;
@@ -278,9 +244,9 @@
         .offer-card {
             background: white;
             border-radius: 2rem;
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.8rem;
             flex: 1;
-            min-width: 220px;
+            min-width: 280px;
             text-align: center;
             transition: 0.2s;
             box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
@@ -292,16 +258,38 @@
             margin-bottom: 1rem;
         }
         .offer-card h3 {
-            margin: 1rem 0 0.5rem;
-            font-size: 1.5rem;
+            margin: 1rem 0 0.8rem;
+            font-size: 1.6rem;
         }
-        .price {
-            font-weight: 800;
-            color: var(--blue-deep);
+        .feature-list {
+            text-align: left;
+            margin: 1.5rem 0;
+            list-style: none;
+        }
+        .feature-list li {
             margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .feature-list i {
+            font-size: 1.2rem;
+            color: #1363df;
+            width: 24px;
+        }
+        .price-tag {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--blue-deep);
+            margin: 1rem 0 0.5rem;
+        }
+        .small-note {
+            font-size: 0.85rem;
+            color: #4f6f8f;
+            margin-top: 0.5rem;
         }
 
-        /* KONTAKT + FORMUŁARZ */
+        /* KONTAKT (bez jazdy próbnej) */
         .contact-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -359,6 +347,18 @@
             font-size: 1.3rem;
             transition: 0.2s;
         }
+        .hours-column {
+            background: #eef2fc;
+            border-radius: 1.2rem;
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+        }
+        .hours-column p {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.6rem 0;
+            font-size: 0.95rem;
+        }
 
         footer {
             background: var(--blue-deep);
@@ -402,7 +402,6 @@
         </div>
         <ul class="nav-links" id="nav-links">
             <li><a href="#home" class="active nav-item">Strona główna</a></li>
-            <li><a href="#gallery" class="nav-item">Galeria</a></li>
             <li><a href="#offer" class="nav-item">Oferta</a></li>
             <li><a href="#contact" class="nav-item">Kontakt</a></li>
         </ul>
@@ -410,15 +409,15 @@
 </header>
 
 <main>
-    <!-- SEKCJA GŁÓWNA / HOME z mapą Google i opiniami -->
+    <!-- SEKCJA GŁÓWNA / HOME z mapą i opiniami -->
     <section id="home" class="section">
         <div class="hero">
             <div class="hero-grid">
                 <div class="hero-text">
                     <h1><span>Prawko Pułtusk</span> – zdaj za pierwszym razem!</h1>
-                    <p><strong>✧ Zobacz zdjęcia ✧</strong> – nowoczesne samochody, profesjonalni instruktorzy, komfortowa nauka jazdy w Pułtusku. Sprawdź naszą galerię i przekonaj się, dlaczego kursanci nas wybierają.</p>
+                    <p><strong>✧ Zobacz zajęcia ✧</strong> – profesjonalna nauka jazdy kategorii B w Pułtusku. Nowoczesne metody, indywidualne podejście i wysoka zdawalność.</p>
                     <div class="btn-group">
-                        <a href="#gallery" class="btn">📸 Zobacz zdjęcia</a>
+                        <a href="#offer" class="btn">📘 Zobacz ofertę</a>
                         <a href="#contact" class="btn btn-outline">📞 Zapisz się na kurs</a>
                     </div>
                 </div>
@@ -433,7 +432,14 @@
                     <div class="info-row"><i class="fas fa-tag"></i> Ośrodek szkolenia kierowców</div>
                     <div class="info-row"><i class="fas fa-map-pin"></i> Wjazd od ul. Harcerskiej, aleja Tysiąclecia 12, 06-100 Pułtusk</div>
                     <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
-                    <div class="info-row"><i class="far fa-clock"></i> <div><strong>Godziny:</strong> Wkrótce zamknięcie · 16:00 · Otwarcie: śr., 08:00</div></div>
+                    <div class="info-row"><i class="far fa-calendar-alt"></i> 
+                        <div><strong>Godziny otwarcia:</strong></div>
+                    </div>
+                    <!-- GODZINY ROZPISANE W KOLUMNIE -->
+                    <div class="hours-column">
+                        <p><span>Poniedziałek – Piątek:</span> <strong>8:00 – 16:00</strong></p>
+                        <p><span>Sobota – Niedziela:</span> <strong>10:00 – 14:00</strong></p>
+                    </div>
                     <div class="hours">
                         <i class="fas fa-globe"></i> <strong>Zobacz z zewnątrz</strong> — nowoczesna siedziba w Pułtusku, parking dla kursantów.
                     </div>
@@ -443,95 +449,72 @@
                 </div>
             </div>
         </div>
-        <!-- dodatkowe info -->
+        <!-- dodatkowe wyróżnienie -->
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; background: #eaf4ff; border-radius: 1.8rem; padding: 1rem 2rem; margin-top: 1.2rem;">
             <span><i class="fas fa-check-circle" style="color:#1363df;"></i> Ponad 5000 zadowolonych kursantów</span>
             <span><i class="fas fa-car"></i> Nowoczesny tabor (hybrydy, klimatyzacja)</span>
-            <span><i class="fas fa-chalkboard-user"></i> Jazdy doszkalające i egzaminy wewnętrzne</span>
+            <span><i class="fas fa-chalkboard-user"></i> Książka + darmowe testy w cenie</span>
         </div>
     </section>
 
-    <!-- GALERIA ZDJĘĆ -->
-    <section id="gallery" class="section">
-        <h2 class="section-title">Galeria zdjęć</h2>
-        <p class="section-sub">Zobacz naszą flotę, nowoczesne sale wykładowe oraz uśmiechniętych kursantów na drodze.</p>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <a href="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600" data-lightbox="gallery" data-title="Nowoczesne auto szkoleniowe z podwójnym sterowaniem">
-                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=450&fit=crop" alt="Samochód do nauki jazdy">
-                </a>
-                <div class="gallery-caption">Auto z podwójnym sterowaniem</div>
-            </div>
-            <div class="gallery-item">
-                <a href="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600" data-lightbox="gallery" data-title="Zajęcia praktyczne na miasteczku">
-                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&h=450&fit=crop" alt="Jazda praktyczna">
-                </a>
-                <div class="gallery-caption">Profesjonalny instruktor</div>
-            </div>
-            <div class="gallery-item">
-                <a href="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=600" data-lightbox="gallery" data-title="Nowoczesne wnętrze sali wykładowej">
-                    <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=600&h=450&fit=crop" alt="Sala wykładowa">
-                </a>
-                <div class="gallery-caption">Teoria w nowoczesnej sali</div>
-            </div>
-            <div class="gallery-item">
-                <a href="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=600" data-lightbox="gallery" data-title="Grupa kursantów z instruktorem">
-                    <img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=600&h=450&fit=crop" alt="Kursanci">
-                </a>
-                <div class="gallery-caption">Przyjazna atmosfera</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- OFERTA -->
+    <!-- OFERTA – tylko kategoria B, bez szybkiego kursu, z książką i testami -->
     <section id="offer" class="section">
         <h2 class="section-title">Nasza oferta</h2>
-        <p class="section-sub">Kompleksowe kursy na prawo jazdy kategorii B, A, oraz doszkalanie – dopasujemy program do Ciebie.</p>
+        <p class="section-sub">Kompleksowy kurs prawa jazdy kategorii B – profesjonalnie i bez stresu.</p>
         <div class="offers-grid">
             <div class="offer-card">
                 <i class="fas fa-id-card"></i>
                 <h3>Kurs podstawowy B</h3>
-                <p>30 h teorii + 30 h praktyki, materiały, wykwalifikowana kadra.</p>
-                <div class="price">od 2490 zł</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 30 godzin teorii</li>
+                    <li><i class="fas fa-check-circle"></i> 30 godzin praktyki (jazdy)</li>
+                    <li><i class="fas fa-check-circle"></i> Materiały: książka do nauki jazdy</li>
+                    <li><i class="fas fa-check-circle"></i> Darmowy dostęp do platformy testów online</li>
+                    <li><i class="fas fa-check-circle"></i> Profesjonalni instruktorzy</li>
+                    <li><i class="fas fa-check-circle"></i> Egzamin wewnętrzny przygotowujący do WORD</li>
+                </ul>
+                <div class="price-tag">od 2490 zł</div>
+                <div class="small-note">Możliwość rozłożenia na raty 0%</div>
             </div>
-            <div class="offer-card">
-                <i class="fas fa-motorcycle"></i>
-                <h3>Prawo jazdy A / A2</h3>
-                <p>Profesjonalne szkolenie na motocykl, bezpieczeństwo i technika.</p>
-                <div class="price">od 1990 zł</div>
-            </div>
+            <!-- Jazdy doszkalające – brak ceny, tylko info że w razie potrzeby -->
             <div class="offer-card">
                 <i class="fas fa-sync-alt"></i>
                 <h3>Jazdy doszkalające</h3>
-                <p>Indywidualne godziny, egzamin wewnętrzny, elastyczne terminy.</p>
-                <div class="price">120 zł / h</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-hourglass-half"></i> Dodatkowe godziny dla potrzebujących</li>
+                    <li><i class="fas fa-road"></i> Indywidualny program na życzenie kursanta</li>
+                    <li><i class="fas fa-chart-line"></i> Skupienie na słabych punktach</li>
+                    <li><i class="fas fa-book-open"></i> Możliwość korzystania z teorii i testów</li>
+                </ul>
+                <div class="small-note">Organizowane w miarę potrzeb – bez podanej ceny, do uzgodnienia indywidualnie</div>
             </div>
-            <div class="offer-card">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>Kursy intensywne</h3>
-                <p>Zdać w miesiąc! Zajęcia codziennie, szybki kurs z egzaminem.</p>
-                <div class="price">2990 zł</div>
-            </div>
+        </div>
+        <div style="margin-top: 2rem; background: #e3f2fd; border-radius: 1.5rem; padding: 1rem 1.5rem; text-align: center;">
+            <i class="fas fa-graduation-cap" style="color:#1363df;"></i> <strong>Każdy kursant otrzymuje książkę i dostęp do testów on-line!</strong> – przygotujesz się perfekcyjnie do egzaminu.
         </div>
     </section>
 
-    <!-- KONTAKT I FORMUŁARZ -->
+    <!-- KONTAKT I FORMUŁARZ – usunięta wzmianka o jeździe próbnej, zmieniony email -->
     <section id="contact" class="section">
         <h2 class="section-title">Kontakt i zapisy</h2>
-        <p class="section-sub">Skontaktuj się z nami – odpowiemy na wszystkie pytania i umówimy jazdę próbną.</p>
+        <p class="section-sub">Masz pytania? Wypełnij formularz – oddzwonimy, aby omówić szczegóły kursu.</p>
         <div class="contact-wrapper">
             <div class="contact-info">
                 <div class="info-row"><i class="fas fa-map-marker-alt"></i> aleja Tysiąclecia 12 (wjazd od Harcerskiej), 06-100 Pułtusk</div>
                 <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
-                <div class="info-row"><i class="fas fa-envelope"></i> biuro@prawkopultusk.pl</div>
-                <div class="info-row"><i class="far fa-clock"></i> Pon-Pt: 8:00–20:00, Sob: 9:00–14:00</div>
+                <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
+                <!-- godziny pracy w kolumnie tutaj też dla przejrzystości -->
+                <div class="hours-column" style="margin-top: 0.8rem;">
+                    <p><span><i class="far fa-clock"></i> Poniedziałek – Piątek:</span> <strong>8:00 – 16:00</strong></p>
+                    <p><span><i class="far fa-clock"></i> Sobota – Niedziela:</span> <strong>10:00 – 14:00</strong></p>
+                </div>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
-                <div style="margin-top: 1.5rem;">
-                    <i class="fas fa-map-pin"></i> <strong>Mapa dojazdu:</strong> <a href="#" style="color:#1363df;">Google Maps – zobacz trasę</a>
+                <div style="margin-top: 1rem;">
+                    <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="#" style="color:#1363df;">Google Maps – zobacz trasę</a>
                 </div>
             </div>
             <div class="contact-form">
@@ -546,7 +529,7 @@
                         <input type="email" id="email" placeholder="Adres e-mail">
                     </div>
                     <div class="form-group">
-                        <textarea rows="4" id="message" placeholder="Twoja wiadomość / wybór kursu" required></textarea>
+                        <textarea rows="4" id="message" placeholder="Twoja wiadomość (np. wybór terminu, pytanie o kurs)" required></textarea>
                     </div>
                     <button type="submit" class="btn">Wyślij wiadomość <i class="fas fa-paper-plane"></i></button>
                     <p id="formFeedback" style="margin-top: 1rem; font-size: 0.8rem; color: #1363df;"></p>
@@ -557,23 +540,23 @@
 </main>
 
 <footer>
-    <p>&copy; 2025 Prawko Pułtusk – Nauka Jazdy Mariusz Kowalewski | Nowoczesna szkoła jazdy w Pułtusku | Godziny otwarcia: 08:00–20:00</p>
-    <p style="margin-top: 0.6rem; font-size: 0.8rem;"><i class="fas fa-car-side"></i> Ponad 5000 zdanych egzaminów | Dołącz do nas już dziś!</p>
+    <p>&copy; 2025 Prawko Pułtusk – Nauka Jazdy Mariusz Kowalewski | Tylko kategoria B | Książka + darmowe testy w cenie kursu</p>
+    <p style="margin-top: 0.6rem; font-size: 0.8rem;"><i class="fas fa-car-side"></i> Ponad 5000 zdanych egzaminów | Zapisz się już dziś!</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
 <script>
     // Mobile menu toggle
     const mobileBtn = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
-    mobileBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-    });
+    if(mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
 
-    // smooth scroll + active link highlight
+    // smooth scroll + active link highlight (dla 2 sekcji)
     const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-item');
-
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -590,26 +573,25 @@
         });
     });
 
-    // form submission simulation (without actual page reload)
+    // form submission simulation
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        if (!name || !phone) {
-            feedback.innerHTML = '⚠️ Proszę uzupełnić imię i numer telefonu.';
-            feedback.style.color = '#c62828';
-            return;
-        }
-        feedback.innerHTML = '✅ Dziękujemy! Skontaktujemy się najszybciej jak to możliwe.';
-        feedback.style.color = '#1363df';
-        contactForm.reset();
-        setTimeout(() => { feedback.innerHTML = ''; }, 4000);
-    });
-
-    // dodatkowe: mała interakcja dla przycisku "Zobacz zdjęcia" na wypadek odesłania
-    console.log("Prawko Pułtusk - strona gotowa");
+    if(contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            if (!name || !phone) {
+                feedback.innerHTML = '⚠️ Proszę uzupełnić imię i numer telefonu.';
+                feedback.style.color = '#c62828';
+                return;
+            }
+            feedback.innerHTML = '✅ Dziękujemy! Skontaktujemy się w sprawie kursu najszybciej jak to możliwe.';
+            feedback.style.color = '#1363df';
+            contactForm.reset();
+            setTimeout(() => { feedback.innerHTML = ''; }, 4000);
+        });
+    }
 </script>
 </body>
 </html>
