@@ -2,7 +2,6 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8"><meta name="google-site-verification" content="7HvbtYWsgtazlj5A8D6pKWtoulLDA2T2ecDyGCR
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Prawko Pułtusk | Nauka Jazdy Mariusz Kowalewski</title>
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231363df'/><text x='50' y='72' font-size='70' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>L</text></svg>">
@@ -16,6 +15,7 @@
             background: #f0f6fe;
             color: #0a2b3e;
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
         }
         :root {
             --blue-deep: #0a2b4e;
@@ -26,124 +26,305 @@
             --white: #ffffff;
             --shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
         }
+
+        /* === HEADER === */
         header {
-            background: rgba(10,43,78,0.95);
+            background: rgba(10,43,78,0.97);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             border-bottom: 1px solid rgba(100,181,246,0.3);
         }
         .nav-container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 0.9rem 2rem;
+            padding: 0.8rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
         }
-        .logo h2 { color: white; font-weight: 700; font-size: 1.6rem; letter-spacing: -0.3px; }
-        .logo span { color: var(--blue-sky); font-weight: 400; }
         .logo-link { text-decoration: none; cursor: pointer; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: #f0f9ff; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 1rem; }
-        .nav-links a:hover, .nav-links a.active { color: var(--blue-sky); border-bottom: 2px solid var(--blue-sky); padding-bottom: 5px; }
-        .menu-toggle { display: none; font-size: 1.8rem; color: white; cursor: pointer; }
+        .logo h2 { color: white; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.3px; }
+        .logo span { color: var(--blue-sky); font-weight: 400; }
 
-        /* Strony */
-        .page { display: none; animation: fadeIn 0.4s ease; }
+        /* === NAWIGACJA === */
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #f0f9ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--blue-sky);
+            border-bottom: 2px solid var(--blue-sky);
+            padding-bottom: 4px;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* === STRONY === */
+        .page { display: none; animation: fadeIn 0.35s ease; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .section { padding: 5rem 2rem; max-width: 1300px; margin: 0 auto; }
-        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--blue-deep); position: relative; display: inline-block; }
-        .section-title:after { content: ''; position: absolute; bottom: -10px; left: 0; width: 70px; height: 4px; background: var(--blue-primary); border-radius: 4px; }
-        .section-sub { color: #2c5a7a; margin-bottom: 3rem; font-size: 1.1rem; }
+        .section {
+            padding: 3rem 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-        /* HERO */
+        /* === TYTUŁY === */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--blue-deep);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--blue-primary);
+            border-radius: 4px;
+        }
+        .section-sub {
+            color: #2c5a7a;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        /* === HERO === */
         .hero {
-            background: linear-gradient(135deg, #eef5ff 0%, #d9eaff 100%);
-            border-radius: 2rem;
-            padding: 4rem 2rem;
+            background: linear-gradient(160deg, #eef5ff 0%, #d9eaff 100%);
+            border-radius: 1.5rem;
+            padding: 3rem 1.2rem;
             text-align: center;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
         }
-        .hero h1 { font-size: 3rem; color: var(--blue-deep); margin-bottom: 0.5rem; }
-        .hero .subtitle { font-size: 1.2rem; color: #1a3a6b; margin-bottom: 2rem; font-weight: 500; }
-        .btn-group { margin-top: 1rem; }
+        .hero h1 {
+            font-size: 2rem;
+            color: var(--blue-deep);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #1a3a6b;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
         .btn {
             display: inline-block;
             background: var(--blue-primary);
             color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 40px;
+            padding: 0.85rem 1.8rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin: 0.5rem;
+            font-size: 1rem;
             transition: 0.3s;
             border: none;
             cursor: pointer;
+            min-width: 200px;
+            text-align: center;
         }
-        .btn-outline { background: transparent; border: 2px solid var(--blue-primary); color: var(--blue-primary); }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--blue-primary);
+            color: var(--blue-primary);
+        }
         .btn-outline:hover { background: var(--blue-primary); color: white; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 18px -8px rgba(19,99,223,0.4); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(19,99,223,0.4); }
+        .btn:active { transform: scale(0.97); }
 
-        /* OFERTA */
-        .offers-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem; }
+        /* === OFERTA === */
+        .offers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
         .offer-card {
             background: white;
-            border-radius: 2rem;
-            padding: 2rem 1.8rem;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.2rem;
             flex: 1;
-            min-width: 280px;
+            min-width: 260px;
+            max-width: 450px;
             text-align: center;
-            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--blue-ocean);
+            box-shadow: 0 10px 24px -10px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--blue-ocean);
         }
-        .offer-card i { font-size: 2.8rem; color: var(--blue-primary); margin-bottom: 1rem; }
-        .offer-card h3 { margin: 1rem 0 0.8rem; font-size: 1.6rem; }
-        .feature-list { text-align: left; margin: 1.5rem 0; list-style: none; }
-        .feature-list li { margin: 0.8rem 0; display: flex; align-items: center; gap: 0.7rem; }
-        .feature-list i { font-size: 1.2rem; color: #1363df; width: 24px; }
-        .small-note { font-size: 0.85rem; color: #4f6f8f; margin-top: 0.5rem; }
+        .offer-card i { font-size: 2.4rem; color: var(--blue-primary); margin-bottom: 1rem; }
+        .offer-card h3 { margin: 0.8rem 0; font-size: 1.4rem; }
+        .feature-list {
+            text-align: left;
+            margin: 1.2rem 0;
+            list-style: none;
+        }
+        .feature-list li {
+            margin: 0.7rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .feature-list i {
+            font-size: 1.1rem;
+            color: #1363df;
+            width: 22px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .small-note {
+            font-size: 0.85rem;
+            color: #4f6f8f;
+            margin-top: 0.5rem;
+        }
 
-        /* KONTAKT */
-        .contact-wrapper { display: flex; flex-wrap: wrap; gap: 2.5rem; background: white; border-radius: 2rem; padding: 2rem; box-shadow: var(--shadow); }
-        .contact-info { flex: 1; }
-        .contact-form { flex: 1; }
-        .info-row { display: flex; gap: 1rem; margin: 0.8rem 0; align-items: center; }
-        .info-row i { width: 26px; color: var(--blue-primary); }
-        .hours-column { background: #eef2fc; border-radius: 1.2rem; padding: 1rem 1.2rem; margin-top: 1rem; }
-        .hours-column p { display: flex; justify-content: space-between; margin: 0.6rem 0; font-size: 0.95rem; }
-        .form-group { margin-bottom: 1.2rem; }
+        /* === O SZKOLE === */
+        .about-box {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.2rem;
+            box-shadow: var(--shadow);
+        }
+        .about-box p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .location-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .location-card {
+            background: #f8fbff;
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            flex: 1;
+            min-width: 240px;
+            border-left: 4px solid var(--blue-ocean);
+        }
+        .location-card h4 {
+            color: var(--blue-deep);
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+        .location-card p {
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+        }
+
+        /* === KONTAKT === */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.2rem;
+            box-shadow: var(--shadow);
+        }
+        .contact-info { flex: 1; min-width: 260px; }
+        .contact-form { flex: 1; min-width: 260px; }
+        .info-row {
+            display: flex;
+            gap: 0.8rem;
+            margin: 0.7rem 0;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .info-row i { width: 24px; color: var(--blue-primary); flex-shrink: 0; text-align: center; }
+        .hours-column {
+            background: #eef2fc;
+            border-radius: 1rem;
+            padding: 0.9rem 1rem;
+            margin-top: 0.8rem;
+        }
+        .hours-column p {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .form-group { margin-bottom: 1rem; }
         input, textarea {
             width: 100%;
-            padding: 1rem;
-            border-radius: 1.5rem;
+            padding: 0.85rem 1rem;
+            border-radius: 1.2rem;
             border: 1px solid #cbdff2;
             font-family: inherit;
+            font-size: 1rem;
             background: #fafdff;
             transition: 0.2s;
+            -webkit-appearance: none;
         }
-        input:focus, textarea:focus { outline: none; border-color: var(--blue-primary); box-shadow: 0 0 0 3px rgba(30,136,229,0.2); }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--blue-primary);
+            box-shadow: 0 0 0 3px rgba(30,136,229,0.15);
+        }
         button[type="submit"] {
             background: var(--blue-primary);
             width: 100%;
             padding: 0.9rem;
             border: none;
-            font-weight: bold;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 1.05rem;
             color: white;
-            border-radius: 40px;
+            border-radius: 50px;
             cursor: pointer;
+            transition: 0.3s;
         }
-        .social-icons { margin-top: 1.8rem; display: flex; gap: 1.2rem; }
+        button[type="submit"]:hover { background: #1055c0; }
+        button[type="submit"]:active { transform: scale(0.97); }
+
+        .social-icons {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
         .social-icons a {
             background: #eef2ff;
-            width: 42px; height: 42px;
+            width: 44px;
+            height: 44px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -155,25 +336,61 @@
         }
         .social-icons a:hover { background: var(--blue-primary); color: white; }
 
-        /* O SZKOLE */
-        .location-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--blue-ocean);
-            margin-bottom: 1.5rem;
+        /* === STOPKA === */
+        footer {
+            background: var(--blue-deep);
+            color: #cdedff;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            font-size: 0.85rem;
         }
-        .location-card h4 { color: var(--blue-deep); margin-bottom: 0.5rem; }
 
-        footer { background: var(--blue-deep); color: #cdedff; text-align: center; padding: 2rem; margin-top: 3rem; }
+        /* ========== RESPONSYWNOŚĆ ========== */
+        @media (min-width: 768px) {
+            .section { padding: 5rem 2rem; }
+            .hero { padding: 4rem 2.5rem; border-radius: 2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2.3rem; }
+            .section-sub { font-size: 1.1rem; }
+            .offer-card { padding: 2rem 1.8rem; }
+            .about-box { padding: 2rem 2.5rem; }
+            .contact-wrapper { padding: 2rem 2.5rem; }
+            .btn { min-width: 220px; }
+        }
 
-        @media (max-width: 850px) {
-            .nav-links { display: none; width: 100%; flex-direction: column; text-align: center; padding: 1rem 0; }
+        @media (min-width: 1024px) {
+            .hero h1 { font-size: 3.2rem; }
+            .section-title { font-size: 2.5rem; }
+            .offers-grid { gap: 2rem; }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+                gap: 0.6rem;
+            }
             .nav-links.show { display: flex; }
             .menu-toggle { display: block; }
-            .hero h1 { font-size: 2rem; }
-            .section-title { font-size: 2rem; }
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.6rem;
+            }
+            .hero h1 { font-size: 1.6rem; }
+            .hero .subtitle { font-size: 0.95rem; }
+            .section { padding: 2rem 0.8rem; }
+            .section-title { font-size: 1.5rem; }
+            .section-sub { font-size: 0.9rem; margin-bottom: 1.5rem; }
+            .offer-card { min-width: 100%; }
+            .btn { width: 100%; min-width: auto; }
+            .btn-group { flex-direction: column; }
+            .location-row { flex-direction: column; }
+            .contact-wrapper { flex-direction: column; }
+            .hours-column p { flex-direction: column; }
         }
     </style>
 </head>
@@ -186,9 +403,9 @@
                 <h2>Prawko Pułtusk <span>| Mariusz Kowalewski</span></h2>
             </div>
         </a>
-        <div class="menu-toggle" id="mobile-menu">
+        <button class="menu-toggle" id="mobile-menu" aria-label="Menu">
             <i class="fas fa-bars"></i>
-        </div>
+        </button>
         <ul class="nav-links" id="nav-links">
             <li><a onclick="showPage('home')" class="active nav-link" data-page="home">Strona główna</a></li>
             <li><a onclick="showPage('oszkole')" class="nav-link" data-page="oszkole">O szkole</a></li>
@@ -206,8 +423,8 @@
                 <h1>Prawko Pułtusk – zdaj za pierwszym razem!</h1>
                 <p class="subtitle">Ponad 1000 zadowolonych kursantów</p>
                 <div class="btn-group">
-                    <a class="btn" onclick="showPage('oferta')">📘 Zobacz ofertę</a>
-                    <a class="btn btn-outline" onclick="showPage('kontakt')">📞 Zapisz się na kurs</a>
+                    <button class="btn" onclick="showPage('oferta')">📘 Zobacz ofertę</button>
+                    <button class="btn btn-outline" onclick="showPage('kontakt')">📞 Zapisz się na kurs</button>
                 </div>
             </div>
         </div>
@@ -218,20 +435,18 @@
         <div class="section">
             <h2 class="section-title">O szkole</h2>
             <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
-            <div style="background: white; border-radius: 2rem; padding: 2rem; box-shadow: var(--shadow);">
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
-                    <strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa na rynku od <strong>2005 roku</strong>, oferuje kursantom najlepsze kształcenie na prawo jazdy kat. B na terenie Pułtuska i okolic. W ośrodku dbamy o to, aby kursanci zostali wyszkoleni na dobrych kierowców.
-                </p>
-                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
-                    <div class="location-card" style="flex: 1; min-width: 260px;">
-                        <h4><i class="fas fa-building" style="color: var(--blue-primary); margin-right: 0.5rem;"></i> Biuro</h4>
-                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 20px;"></i> Winniczka, ul. Leśna 21</p>
-                        <p style="font-size: 0.9rem; color: #4f6f8f; margin-top: 0.5rem;">Zapisy, formalności, dokumenty</p>
+            <div class="about-box">
+                <p><strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa na rynku od <strong>2005 roku</strong>, oferuje kursantom najlepsze kształcenie na prawo jazdy kat. B na terenie Pułtuska i okolic. W ośrodku dbam o to, aby kursanci zostali wyszkoleni na dobrych kierowców.</p>
+                <div class="location-row">
+                    <div class="location-card">
+                        <h4><i class="fas fa-building" style="color: var(--blue-primary); margin-right: 0.4rem;"></i> Biuro</h4>
+                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 18px;"></i> Winniczka, ul. Leśna 21</p>
+                        <p style="font-size: 0.8rem; color: #4f6f8f; margin-top: 0.3rem;">Zapisy, formalności, dokumenty</p>
                     </div>
-                    <div class="location-card" style="flex: 1; min-width: 260px;">
-                        <h4><i class="fas fa-chalkboard-teacher" style="color: var(--blue-primary); margin-right: 0.5rem;"></i> Sala wykładowa</h4>
-                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 20px;"></i> Wjazd od ul. Harcerskiej, al. Tysiąclecia 12</p>
-                        <p style="font-size: 0.9rem; color: #4f6f8f; margin-top: 0.5rem;">Zajęcia teoretyczne, testy wewnętrzne</p>
+                    <div class="location-card">
+                        <h4><i class="fas fa-chalkboard-teacher" style="color: var(--blue-primary); margin-right: 0.4rem;"></i> Sala wykładowa</h4>
+                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 18px;"></i> Wjazd od ul. Harcerskiej, al. Tysiąclecia 12</p>
+                        <p style="font-size: 0.8rem; color: #4f6f8f; margin-top: 0.3rem;">Zajęcia teoretyczne, testy wewnętrzne</p>
                     </div>
                 </div>
             </div>
@@ -251,10 +466,10 @@
                         <li><i class="fas fa-check-circle"></i> 30 godzin teorii</li>
                         <li><i class="fas fa-check-circle"></i> 30 godzin praktyki (jazdy)</li>
                         <li><i class="fas fa-check-circle"></i> Materiały do nauki części teoretycznej</li>
-                        <li><i class="fas fa-check-circle"></i> Darmowy dostęp do platformy testów online</li>
+                        <li><i class="fas fa-check-circle"></i> Darmowy dostęp do testów online</li>
                         <li><i class="fas fa-check-circle"></i> Zajęcia z pierwszej pomocy</li>
                         <li><i class="fas fa-check-circle"></i> Profesjonalni instruktorzy</li>
-                        <li><i class="fas fa-check-circle"></i> Egzamin wewnętrzny przygotowujący do WORD</li>
+                        <li><i class="fas fa-check-circle"></i> Egzamin wewnętrzny (próbny WORD)</li>
                     </ul>
                 </div>
                 <div class="offer-card">
@@ -262,14 +477,14 @@
                     <h3>Jazdy doszkalające</h3>
                     <ul class="feature-list">
                         <li><i class="fas fa-hourglass-half"></i> Dodatkowe godziny dla potrzebujących</li>
-                        <li><i class="fas fa-road"></i> Indywidualny program na życzenie kursanta</li>
+                        <li><i class="fas fa-road"></i> Indywidualny program na życzenie</li>
                         <li><i class="fas fa-chart-line"></i> Skupienie na słabych punktach</li>
-                        <li><i class="fas fa-book-open"></i> Możliwość korzystania z teorii i testów</li>
+                        <li><i class="fas fa-book-open"></i> Możliwość korzystania z testów</li>
                     </ul>
                     <div class="small-note">Do uzgodnienia indywidualnie</div>
                 </div>
             </div>
-            <div style="margin-top: 2rem; background: #e3f2fd; border-radius: 1.5rem; padding: 1rem 1.5rem; text-align: center;">
+            <div style="margin-top: 1.5rem; background: #e3f2fd; border-radius: 1.2rem; padding: 1rem; text-align: center;">
                 <i class="fas fa-graduation-cap" style="color:#1363df;"></i> <strong>Każdy kursant otrzymuje książkę i dostęp do testów on-line!</strong>
             </div>
         </div>
@@ -282,19 +497,19 @@
             <p class="section-sub">Masz pytania? Wypełnij formularz – oddzwonimy.</p>
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <div class="info-row"><i class="fas fa-map-marker-alt"></i> al. Tysiąclecia 12 (wjazd od Harcerskiej), 06-100 Pułtusk</div>
-                    <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
+                    <div class="info-row"><i class="fas fa-map-marker-alt"></i> al. Tysiąclecia 12, 06-100 Pułtusk</div>
+                    <div class="info-row"><i class="fas fa-phone-alt"></i> <a href="tel:512103512" style="color:#0a2b3e; text-decoration:none; font-weight:600;">512 103 512</a></div>
                     <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
-                    <div class="hours-column" style="margin-top: 0.8rem;">
-                        <p><span><i class="far fa-clock"></i> Poniedziałek – Piątek:</span> <strong>8:00 – 16:00</strong></p>
-                        <p><span><i class="far fa-clock"></i> Sobota – Niedziela:</span> <strong>10:00 – 14:00</strong></p>
+                    <div class="hours-column">
+                        <p><span><i class="far fa-clock"></i> Pn – Pt:</span> <strong>8:00 – 16:00</strong></p>
+                        <p><span><i class="far fa-clock"></i> Sb – Nd:</span> <strong>10:00 – 14:00</strong></p>
                     </div>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/oskkmMariuszKowalewski/?locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/prawkopultusk/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div style="margin-top: 1rem;">
-                        <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="https://www.google.com/search?q=Nauka+Jazdy+Mariusz+Kowalewski+Pu%C5%82tusk" target="_blank" style="color:#1363df;">Google Maps – zobacz trasę</a>
+                        <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="https://www.google.com/search?q=Nauka+Jazdy+Mariusz+Kowalewski+Pu%C5%82tusk" target="_blank" style="color:#1363df;">Google Maps</a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -307,7 +522,7 @@
                         <div class="form-group"><input type="email" name="email" id="email" placeholder="Adres e-mail"></div>
                         <div class="form-group"><textarea rows="4" name="message" id="message" placeholder="Twoja wiadomość" required></textarea></div>
                         <button type="submit">Wyślij wiadomość <i class="fas fa-paper-plane"></i></button>
-                        <p id="formFeedback" style="margin-top: 1rem; font-size: 0.8rem; color: #1363df;"></p>
+                        <p id="formFeedback" style="margin-top: 0.8rem; font-size: 0.85rem; color: #1363df; text-align: center;"></p>
                     </form>
                 </div>
             </div>
@@ -320,68 +535,63 @@
 </footer>
 
 <script>
-    // === PRZEŁĄCZANIE STRON (WIELOPODSTRONNA) ===
+    // === PRZEŁĄCZANIE STRON ===
     function showPage(pageName) {
-        // Ukryj wszystkie strony
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        // Pokaż wybraną
         document.getElementById('page-' + pageName).classList.add('active');
-
-        // Aktualizuj aktywny link
         document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
         const activeLink = document.querySelector(`.nav-link[data-page="${pageName}"]`);
         if (activeLink) activeLink.classList.add('active');
-
-        // Zamknij menu mobilne
         document.getElementById('nav-links').classList.remove('show');
-
-        // Przewiń na górę
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // === MOBILE MENU ===
     const mobileBtn = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
-    if(mobileBtn) {
-        mobileBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
-    }
+    mobileBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
 
-    // === FORMULARZ (ASYNC Z Web3Forms) ===
+    // Zamykanie menu po kliknięciu poza nim
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#nav-links') && !e.target.closest('#mobile-menu')) {
+            navLinks.classList.remove('show');
+        }
+    });
+
+    // === FORMULARZ Web3Forms ===
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
-    if(contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            if (!name || !phone) {
-                feedback.innerHTML = '⚠️ Proszę uzupełnić imię i numer telefonu.';
-                feedback.style.color = '#c62828';
-                return;
-            }
-            feedback.innerHTML = '⏳ Wysyłanie...';
-            feedback.style.color = '#1363df';
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        if (!name || !phone) {
+            feedback.innerHTML = '⚠️ Proszę uzupełnić imię i numer telefonu.';
+            feedback.style.color = '#c62828';
+            return;
+        }
+        feedback.innerHTML = '⏳ Wysyłanie...';
+        feedback.style.color = '#1363df';
 
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: new FormData(contactForm)
-                });
-                const result = await response.json();
-                if (result.success) {
-                    feedback.innerHTML = '✅ Dziękujemy! Wiadomość wysłana. Skontaktujemy się najszybciej jak to możliwe.';
-                    feedback.style.color = '#22c55e';
-                    contactForm.reset();
-                } else {
-                    throw new Error('Błąd wysyłania');
-                }
-            } catch (error) {
-                feedback.innerHTML = '❌ Ups, coś poszło nie tak. Spróbuj ponownie lub zadzwoń: 512 103 512';
-                feedback.style.color = '#c62828';
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm)
+            });
+            const result = await response.json();
+            if (result.success) {
+                feedback.innerHTML = '✅ Dziękujemy! Skontaktujemy się wkrótce.';
+                feedback.style.color = '#22c55e';
+                contactForm.reset();
+            } else {
+                throw new Error('Błąd');
             }
-            setTimeout(() => { feedback.innerHTML = ''; }, 5000);
-        });
-    }
+        } catch (error) {
+            feedback.innerHTML = '❌ Błąd wysyłania. Zadzwoń: 512 103 512';
+            feedback.style.color = '#c62828';
+        }
+        setTimeout(() => { feedback.innerHTML = ''; }, 5000);
+    });
 </script>
 </body>
 </html>
