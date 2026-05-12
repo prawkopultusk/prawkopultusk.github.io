@@ -46,10 +46,17 @@
         }
         .logo h2 { color: white; font-weight: 700; font-size: 1.6rem; letter-spacing: -0.3px; }
         .logo span { color: var(--blue-sky); font-weight: 400; }
+        .logo-link { text-decoration: none; cursor: pointer; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { color: #f0f9ff; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 1rem; }
         .nav-links a:hover, .nav-links a.active { color: var(--blue-sky); border-bottom: 2px solid var(--blue-sky); padding-bottom: 5px; }
         .menu-toggle { display: none; font-size: 1.8rem; color: white; cursor: pointer; }
+
+        /* Strony */
+        .page { display: none; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
         .section { padding: 5rem 2rem; max-width: 1300px; margin: 0 auto; }
         .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--blue-deep); position: relative; display: inline-block; }
         .section-title:after { content: ''; position: absolute; bottom: -10px; left: 0; width: 70px; height: 4px; background: var(--blue-primary); border-radius: 4px; }
@@ -64,17 +71,8 @@
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
         }
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--blue-deep);
-            margin-bottom: 0.5rem;
-        }
-        .hero .subtitle {
-            font-size: 1.2rem;
-            color: #1a3a6b;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
+        .hero h1 { font-size: 3rem; color: var(--blue-deep); margin-bottom: 0.5rem; }
+        .hero .subtitle { font-size: 1.2rem; color: #1a3a6b; margin-bottom: 2rem; font-weight: 500; }
         .btn-group { margin-top: 1rem; }
         .btn {
             display: inline-block;
@@ -89,11 +87,7 @@
             border: none;
             cursor: pointer;
         }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--blue-primary);
-            color: var(--blue-primary);
-        }
+        .btn-outline { background: transparent; border: 2px solid var(--blue-primary); color: var(--blue-primary); }
         .btn-outline:hover { background: var(--blue-primary); color: white; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 18px -8px rgba(19,99,223,0.4); }
 
@@ -106,7 +100,6 @@
             flex: 1;
             min-width: 280px;
             text-align: center;
-            transition: 0.2s;
             box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
             border-top: 5px solid var(--blue-ocean);
         }
@@ -188,122 +181,135 @@
 
 <header>
     <div class="nav-container">
-        <div class="logo">
-            <h2>Prawko Pułtusk <span>| Mariusz Kowalewski</span></h2>
-        </div>
+        <a class="logo-link" onclick="showPage('home')">
+            <div class="logo">
+                <h2>Prawko Pułtusk <span>| Mariusz Kowalewski</span></h2>
+            </div>
+        </a>
         <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="active nav-item">Strona główna</a></li>
-            <li><a href="#oszkole" class="nav-item">O szkole</a></li>
-            <li><a href="#offer" class="nav-item">Oferta</a></li>
-            <li><a href="#contact" class="nav-item">Kontakt</a></li>
+            <li><a onclick="showPage('home')" class="active nav-link" data-page="home">Strona główna</a></li>
+            <li><a onclick="showPage('oszkole')" class="nav-link" data-page="oszkole">O szkole</a></li>
+            <li><a onclick="showPage('oferta')" class="nav-link" data-page="oferta">Oferta</a></li>
+            <li><a onclick="showPage('kontakt')" class="nav-link" data-page="kontakt">Kontakt</a></li>
         </ul>
     </div>
 </header>
 
 <main>
     <!-- HOME -->
-    <section id="home" class="section">
-        <div class="hero">
-            <h1>Prawko Pułtusk – zdaj za pierwszym razem!</h1>
-            <p class="subtitle">Ponad 1000 zadowolonych kursantów</p>
-            <div class="btn-group">
-                <a href="#offer" class="btn">📘 Zobacz ofertę</a>
-                <a href="#contact" class="btn btn-outline">📞 Zapisz się na kurs</a>
+    <section class="page active" id="page-home">
+        <div class="section">
+            <div class="hero">
+                <h1>Prawko Pułtusk – zdaj za pierwszym razem!</h1>
+                <p class="subtitle">Ponad 1000 zadowolonych kursantów</p>
+                <div class="btn-group">
+                    <a class="btn" onclick="showPage('oferta')">📘 Zobacz ofertę</a>
+                    <a class="btn btn-outline" onclick="showPage('kontakt')">📞 Zapisz się na kurs</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- O SZKOLE -->
-    <section id="oszkole" class="section">
-        <h2 class="section-title">O szkole</h2>
-        <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
-        <div style="background: white; border-radius: 2rem; padding: 2rem; box-shadow: var(--shadow);">
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
-                <strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa na rynku od <strong>2005 roku</strong>, oferuje kursantom najlepsze kształcenie na prawo jazdy kat. B na terenie Pułtuska i okolic. W ośrodku dbam o to, aby kursanci zostali wyszkoleni na dobrych kierowców.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
-                <div class="location-card" style="flex: 1; min-width: 260px;">
-                    <h4><i class="fas fa-building" style="color: var(--blue-primary); margin-right: 0.5rem;"></i> Biuro</h4>
-                    <p><i class="fas fa-map-pin" style="color: #1363df; width: 20px;"></i> Winniczka, ul. Leśna 21</p>
-                    <p style="font-size: 0.9rem; color: #4f6f8f; margin-top: 0.5rem;">Zapisy, formalności, dokumenty</p>
-                </div>
-                <div class="location-card" style="flex: 1; min-width: 260px;">
-                    <h4><i class="fas fa-chalkboard-teacher" style="color: var(--blue-primary); margin-right: 0.5rem;"></i> Sala wykładowa</h4>
-                    <p><i class="fas fa-map-pin" style="color: #1363df; width: 20px;"></i> Wjazd od ul. Harcerskiej, al. Tysiąclecia 12</p>
-                    <p style="font-size: 0.9rem; color: #4f6f8f; margin-top: 0.5rem;">Zajęcia teoretyczne, testy wewnętrzne</p>
+    <section class="page" id="page-oszkole">
+        <div class="section">
+            <h2 class="section-title">O szkole</h2>
+            <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
+            <div style="background: white; border-radius: 2rem; padding: 2rem; box-shadow: var(--shadow);">
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    <strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa na rynku od <strong>2005 roku</strong>, oferuje kursantom najlepsze kształcenie na prawo jazdy kat. B na terenie Pułtuska i okolic. W ośrodku dbam o to, aby kursanci zostali wyszkoleni na dobrych kierowców.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+                    <div class="location-card" style="flex: 1; min-width: 260px;">
+                        <h4><i class="fas fa-building" style="color: var(--blue-primary); margin-right: 0.5rem;"></i> Biuro</h4>
+                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 20px;"></i> Winniczka, ul. Leśna 21</p>
+                        <p style="font-size: 0.9rem; color: #4f6f8f; margin-top: 0.5rem;">Zapisy, formalności, dokumenty</p>
+                    </div>
+                    <div class="location-card" style="flex: 1; min-width: 260px;">
+                        <h4><i class="fas fa-chalkboard-teacher" style="color: var(--blue-primary); margin-right: 0.5rem;"></i> Sala wykładowa</h4>
+                        <p><i class="fas fa-map-pin" style="color: #1363df; width: 20px;"></i> Wjazd od ul. Harcerskiej, al. Tysiąclecia 12</p>
+                        <p style="font-size: 0.9rem; color: #4f6f8f; margin-top: 0.5rem;">Zajęcia teoretyczne, testy wewnętrzne</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- OFERTA -->
-    <section id="offer" class="section">
-        <h2 class="section-title">Nasza oferta</h2>
-        <p class="section-sub">Kompleksowy kurs prawa jazdy kategorii B – profesjonalnie i bez stresu.</p>
-        <div class="offers-grid">
-            <div class="offer-card">
-                <i class="fas fa-id-card"></i>
-                <h3>Kurs podstawowy B</h3>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> 30 godzin teorii</li>
-                    <li><i class="fas fa-check-circle"></i> 30 godzin praktyki (jazdy)</li>
-                    <li><i class="fas fa-check-circle"></i> Materiały do nauki części teoretycznej</li>
-                    <li><i class="fas fa-check-circle"></i> Darmowy dostęp do platformy testów online</li>
-                    <li><i class="fas fa-check-circle"></i> Zajęcia z pierwszej pomocy</li>
-                    <li><i class="fas fa-check-circle"></i> Profesjonalni instruktorzy</li>
-                    <li><i class="fas fa-check-circle"></i> Egzamin wewnętrzny przygotowujący do WORD</li>
-                </ul>
+    <section class="page" id="page-oferta">
+        <div class="section">
+            <h2 class="section-title">Nasza oferta</h2>
+            <p class="section-sub">Kompleksowy kurs prawa jazdy kategorii B – profesjonalnie i bez stresu.</p>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Kurs podstawowy B</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> 30 godzin teorii</li>
+                        <li><i class="fas fa-check-circle"></i> 30 godzin praktyki (jazdy)</li>
+                        <li><i class="fas fa-check-circle"></i> Materiały do nauki części teoretycznej</li>
+                        <li><i class="fas fa-check-circle"></i> Darmowy dostęp do platformy testów online</li>
+                        <li><i class="fas fa-check-circle"></i> Zajęcia z pierwszej pomocy</li>
+                        <li><i class="fas fa-check-circle"></i> Profesjonalni instruktorzy</li>
+                        <li><i class="fas fa-check-circle"></i> Egzamin wewnętrzny przygotowujący do WORD</li>
+                    </ul>
+                </div>
+                <div class="offer-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Jazdy doszkalające</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-hourglass-half"></i> Dodatkowe godziny dla potrzebujących</li>
+                        <li><i class="fas fa-road"></i> Indywidualny program na życzenie kursanta</li>
+                        <li><i class="fas fa-chart-line"></i> Skupienie na słabych punktach</li>
+                        <li><i class="fas fa-book-open"></i> Możliwość korzystania z teorii i testów</li>
+                    </ul>
+                    <div class="small-note">Do uzgodnienia indywidualnie</div>
+                </div>
             </div>
-            <div class="offer-card">
-                <i class="fas fa-sync-alt"></i>
-                <h3>Jazdy doszkalające</h3>
-                <ul class="feature-list">
-                    <li><i class="fas fa-hourglass-half"></i> Dodatkowe godziny dla potrzebujących</li>
-                    <li><i class="fas fa-road"></i> Indywidualny program na życzenie kursanta</li>
-                    <li><i class="fas fa-chart-line"></i> Skupienie na słabych punktach</li>
-                    <li><i class="fas fa-book-open"></i> Możliwość korzystania z teorii i testów</li>
-                </ul>
-                <div class="small-note">Do uzgodnienia indywidualnie</div>
+            <div style="margin-top: 2rem; background: #e3f2fd; border-radius: 1.5rem; padding: 1rem 1.5rem; text-align: center;">
+                <i class="fas fa-graduation-cap" style="color:#1363df;"></i> <strong>Każdy kursant otrzymuje książkę i dostęp do testów on-line!</strong>
             </div>
-        </div>
-        <div style="margin-top: 2rem; background: #e3f2fd; border-radius: 1.5rem; padding: 1rem 1.5rem; text-align: center;">
-            <i class="fas fa-graduation-cap" style="color:#1363df;"></i> <strong>Każdy kursant otrzymuje książkę i dostęp do testów on-line!</strong>
         </div>
     </section>
 
     <!-- KONTAKT -->
-    <section id="contact" class="section">
-        <h2 class="section-title">Kontakt i zapisy</h2>
-        <p class="section-sub">Masz pytania? Wypełnij formularz – oddzwonimy.</p>
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <div class="info-row"><i class="fas fa-map-marker-alt"></i> al. Tysiąclecia 12 (wjazd od Harcerskiej), 06-100 Pułtusk</div>
-                <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
-                <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
-                <div class="hours-column" style="margin-top: 0.8rem;">
-                    <p><span><i class="far fa-clock"></i> Poniedziałek – Piątek:</span> <strong>8:00 – 16:00</strong></p>
-                    <p><span><i class="far fa-clock"></i> Sobota – Niedziela:</span> <strong>10:00 – 14:00</strong></p>
+    <section class="page" id="page-kontakt">
+        <div class="section">
+            <h2 class="section-title">Kontakt i zapisy</h2>
+            <p class="section-sub">Masz pytania? Wypełnij formularz – oddzwonimy.</p>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-row"><i class="fas fa-map-marker-alt"></i> al. Tysiąclecia 12 (wjazd od Harcerskiej), 06-100 Pułtusk</div>
+                    <div class="info-row"><i class="fas fa-phone-alt"></i> 512 103 512</div>
+                    <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
+                    <div class="hours-column" style="margin-top: 0.8rem;">
+                        <p><span><i class="far fa-clock"></i> Poniedziałek – Piątek:</span> <strong>8:00 – 16:00</strong></p>
+                        <p><span><i class="far fa-clock"></i> Sobota – Niedziela:</span> <strong>10:00 – 14:00</strong></p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/oskkmMariuszKowalewski/?locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/prawkopultusk/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="https://www.google.com/search?q=Nauka+Jazdy+Mariusz+Kowalewski+Pu%C5%82tusk" target="_blank" style="color:#1363df;">Google Maps – zobacz trasę</a>
+                    </div>
                 </div>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/oskkmMariuszKowalewski/?locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/prawkopultusk/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="ea046d0b-a314-41b2-b6e9-3bae7532d43b">
+                        <input type="hidden" name="subject" value="Nowa wiadomość ze strony Prawko Pułtusk">
+                        <input type="hidden" name="redirect" value="false">
+                        <div class="form-group"><input type="text" name="name" id="name" placeholder="Imię i nazwisko" required></div>
+                        <div class="form-group"><input type="tel" name="phone" id="phone" placeholder="Numer telefonu" required></div>
+                        <div class="form-group"><input type="email" name="email" id="email" placeholder="Adres e-mail"></div>
+                        <div class="form-group"><textarea rows="4" name="message" id="message" placeholder="Twoja wiadomość" required></textarea></div>
+                        <button type="submit">Wyślij wiadomość <i class="fas fa-paper-plane"></i></button>
+                        <p id="formFeedback" style="margin-top: 1rem; font-size: 0.8rem; color: #1363df;"></p>
+                    </form>
                 </div>
-                <div style="margin-top: 1rem;">
-                    <i class="fas fa-map-pin"></i> <strong>Dojazd:</strong> <a href="https://www.google.com/search?q=Nauka+Jazdy+Mariusz+Kowalewski+Pu%C5%82tusk" target="_blank" style="color:#1363df;">Google Maps – zobacz trasę</a>
-                </div>
-            </div>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group"><input type="text" id="name" placeholder="Imię i nazwisko" required></div>
-                    <div class="form-group"><input type="tel" id="phone" placeholder="Numer telefonu" required></div>
-                    <div class="form-group"><input type="email" id="email" placeholder="Adres e-mail"></div>
-                    <div class="form-group"><textarea rows="4" id="message" placeholder="Twoja wiadomość" required></textarea></div>
-                    <button type="submit">Wyślij wiadomość <i class="fas fa-paper-plane"></i></button>
-                    <p id="formFeedback" style="margin-top: 1rem; font-size: 0.8rem; color: #1363df;"></p>
-                </form>
             </div>
         </div>
     </section>
@@ -314,30 +320,37 @@
 </footer>
 
 <script>
+    // === PRZEŁĄCZANIE STRON (WIELOPODSTRONNA) ===
+    function showPage(pageName) {
+        // Ukryj wszystkie strony
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        // Pokaż wybraną
+        document.getElementById('page-' + pageName).classList.add('active');
+
+        // Aktualizuj aktywny link
+        document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-link[data-page="${pageName}"]`);
+        if (activeLink) activeLink.classList.add('active');
+
+        // Zamknij menu mobilne
+        document.getElementById('nav-links').classList.remove('show');
+
+        // Przewiń na górę
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // === MOBILE MENU ===
     const mobileBtn = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
     if(mobileBtn) {
         mobileBtn.addEventListener('click', () => { navLinks.classList.toggle('show'); });
     }
 
-    const sections = document.querySelectorAll('section');
-    const navItems = document.querySelectorAll('.nav-item');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            if (pageYOffset >= sectionTop) { current = section.getAttribute('id'); }
-        });
-        navItems.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) { link.classList.add('active'); }
-        });
-    });
-
+    // === FORMULARZ (ASYNC Z Web3Forms) ===
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
     if(contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
@@ -346,10 +359,27 @@
                 feedback.style.color = '#c62828';
                 return;
             }
-            feedback.innerHTML = '✅ Dziękujemy! Skontaktujemy się najszybciej jak to możliwe.';
+            feedback.innerHTML = '⏳ Wysyłanie...';
             feedback.style.color = '#1363df';
-            contactForm.reset();
-            setTimeout(() => { feedback.innerHTML = ''; }, 4000);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    feedback.innerHTML = '✅ Dziękujemy! Wiadomość wysłana. Skontaktujemy się najszybciej jak to możliwe.';
+                    feedback.style.color = '#22c55e';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Błąd wysyłania');
+                }
+            } catch (error) {
+                feedback.innerHTML = '❌ Ups, coś poszło nie tak. Spróbuj ponownie lub zadzwoń: 512 103 512';
+                feedback.style.color = '#c62828';
+            }
+            setTimeout(() => { feedback.innerHTML = ''; }, 5000);
         });
     }
 </script>
