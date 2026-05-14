@@ -182,7 +182,7 @@
         button[type="submit"] { background:var(--accent); width:100%; padding:0.9rem; border:none; font-weight:700; font-size:1rem; color:white; border-radius:50px; cursor:pointer; }
         .social-icons { margin-top:1rem; display:flex; gap:0.8rem; }
         .social-icons a { background:#eef2ff; width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; color:var(--accent); font-size:1.2rem; text-decoration:none; }
-        /* nowy baner telefoniczny pod nagłówkiem kontaktu */
+        /* baner telefoniczny pod nagłówkiem kontaktu - bez emotki */
         .phone-banner {
             background: linear-gradient(135deg, #fff7e0 0%, #fff2cc 100%);
             border-left: 5px solid #ff9800;
@@ -299,7 +299,7 @@
                 <p class="subtitle">Ponad 1000 zadowolonych kursantów</p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="showPage('oferta')">📘 Zobacz ofertę</button>
-                    <button class="btn btn-outline" onclick="showPage('kontakt')">📞 Zapisz się na kurs</button>
+                    <button class="btn btn-outline" onclick="showPage('kontakt')">Zapisz się na kurs</button>
                 </div>
                 <div class="hero-car">🚙</div>
                 <div class="hero-dots">
@@ -309,7 +309,7 @@
         </div>
     </section>
 
-    <!-- O SZKOLE (z mapką i strzałkami na górze) -->
+    <!-- O SZKOLE (z mapką - prawidłowe współrzędne) -->
     <section class="page" id="page-oszkole">
         <div class="section">
             <div class="nav-arrows-top">
@@ -320,8 +320,14 @@
             <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
             <div class="about-box">
                 <p><strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa od <strong>2005 roku</strong>. Oferujemy najlepsze kształcenie na prawo jazdy kat. B w Pułtusku i okolicach. Dbam o to, aby każdy kursant został wyszkolony na dobrego kierowcę.</p>
+                <!-- MAPA z prawidłowymi współrzędnymi 52.70660039579894, 21.074818603417288 i widoczną pinezką -->
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d777.8125541839249!2d21.0788918!3d52.7040565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471b3b8c5aa3a4c3%3A0x5f3a7b2c0e8f6d9a!2sal.%20Tysiąclecia%2012%2C%2006-100%20Pu%C5%82tusk!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe 
+                        src="https://www.google.com/maps?q=52.70660039579894,21.074818603417288&hl=pl&z=18&output=embed"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
                 <div class="location-row">
                     <div class="location-card"><h4>📚 Sala wykładowa</h4><p>Wjazd od ul. Harcerskiej, aleja Tysiąclecia 12, 06-100 Pułtusk</p><p style="font-size:0.8rem;color:#4f6f8f;">Teoria, testy, wykłady</p></div>
@@ -386,7 +392,7 @@
         </div>
     </section>
 
-    <!-- KONTAKT (zapis telefoniczny pod nagłówkiem) -->
+    <!-- KONTAKT (bez emotki w telefonie, z banerem telefonicznym) -->
     <section class="page" id="page-kontakt">
         <div class="section">
             <div class="nav-arrows-top">
@@ -396,12 +402,12 @@
             <h2 class="section-title">Kontakt i zapisy</h2>
             <p class="section-sub">Wypełnij formularz – oddzwonimy</p>
             
-            <!-- Baner z zapisami telefonicznymi – przeniesiony pod tytuł -->
+            <!-- Baner z zapisami telefonicznymi - bez emotki, tylko tekst -->
             <div class="phone-banner">
                 <i class="fas fa-phone-alt"></i>
                 <div>
-                    <strong>📞 Zapisy tylko telefonicznie!</strong><br>
-                    <span>Zadzwoń lub zostaw numer, oddzwonimy.</span>
+                    <strong>Zapisy tylko telefonicznie!</strong><br>
+                    <span>Zadzwoń lub napisz wiadomość, oddzwonimy!</span>
                 </div>
             </div>
 
