@@ -120,7 +120,10 @@
 
         .about-box { background:white; border-radius:1.2rem; padding:1.5rem; box-shadow:0 10px 30px -10px rgba(0,0,0,0.08); }
         .about-box p { font-size:0.95rem; line-height:1.7; margin-bottom:1.2rem; }
-        .location-row { display:flex; flex-wrap:wrap; gap:0.8rem; }
+        /* mapa zamiast lokalizacji biura */
+        .map-container { margin-top:1rem; border-radius:1.2rem; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+        .map-container iframe { width:100%; height:300px; border:0; display:block; }
+        .location-row { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem; }
         .location-card { background:#f8fbff; border-radius:1rem; padding:1rem; flex:1; min-width:200px; border-left:4px solid var(--ocean); }
         .location-card h4 { font-size:0.95rem; margin-bottom:0.3rem; }
         .location-card p { font-size:0.85rem; margin:0; }
@@ -133,6 +136,15 @@
         .feature-list li { margin:0.5rem 0; display:flex; gap:0.5rem; font-size:0.9rem; align-items:flex-start; }
         .feature-list i { color:#1363df; font-size:1rem; margin-top:2px; }
         .small-note { font-size:0.8rem; color:#4f6f8f; }
+
+        /* sekcja sprawdź się */
+        .quiz-card { background:white; border-radius:1.2rem; padding:1.8rem; text-align:center; box-shadow:0 10px 30px -10px rgba(0,0,0,0.08); border:1px solid #e2edff; transition:0.2s; }
+        .quiz-card:hover { transform:translateY(-3px); }
+        .quiz-card i { font-size:2.5rem; color:var(--accent); margin-bottom:1rem; }
+        .quiz-card h3 { font-size:1.5rem; margin-bottom:0.5rem; color:var(--blue); }
+        .quiz-card p { color:#2c5a7a; margin-bottom:1.2rem; }
+        .quiz-btn { background:var(--accent); color:white; padding:0.9rem 1.8rem; border-radius:60px; text-decoration:none; font-weight:700; display:inline-flex; align-items:center; gap:10px; transition:0.2s; border:none; font-size:1rem; cursor:pointer; }
+        .quiz-btn:hover { background:#1055c0; transform:scale(1.02); }
 
         .contact-wrapper { display:flex; flex-wrap:wrap; gap:1.5rem; background:white; border-radius:1.2rem; padding:1.5rem; box-shadow:0 10px 30px -10px rgba(0,0,0,0.08); }
         .contact-info { flex:1; min-width:200px; }
@@ -147,6 +159,12 @@
         button[type="submit"] { background:var(--accent); width:100%; padding:0.9rem; border:none; font-weight:700; font-size:1rem; color:white; border-radius:50px; cursor:pointer; }
         .social-icons { margin-top:1rem; display:flex; gap:0.8rem; }
         .social-icons a { background:#eef2ff; width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; color:var(--accent); font-size:1.2rem; text-decoration:none; }
+        .phone-note { background:#fff7e0; border-left:4px solid #ffb74d; padding:0.6rem 1rem; border-radius:1rem; margin-top:0.8rem; font-size:0.85rem; color:#b26a00; display:flex; align-items:center; gap:8px; }
+
+        /* strzałki nawigacyjne */
+        .nav-arrows { display:flex; justify-content:center; gap:1rem; margin-top:2rem; margin-bottom:0.5rem; }
+        .arrow-btn { background:white; border:none; width:48px; height:48px; border-radius:60px; box-shadow:0 5px 15px rgba(0,0,0,0.1); cursor:pointer; font-size:1.4rem; color:var(--accent); transition:0.2s; display:inline-flex; align-items:center; justify-content:center; }
+        .arrow-btn:hover { background:var(--accent); color:white; transform:scale(1.05); }
 
         footer { background:var(--blue); color:#cdedff; text-align:center; padding:1.2rem; font-size:0.8rem; }
 
@@ -167,6 +185,7 @@
             .section { padding:5rem 2rem; }
             .section-title { font-size:2.5rem; }
             .nav-links a { font-size:1.05rem; }
+            .map-container iframe { height:350px; }
         }
 
         /* ========== MOBILE ========== */
@@ -229,6 +248,7 @@
             <li><a onclick="showPage('home')" class="active nav-link" data-page="home">Strona główna</a></li>
             <li><a onclick="showPage('oszkole')" class="nav-link" data-page="oszkole">O szkole</a></li>
             <li><a onclick="showPage('oferta')" class="nav-link" data-page="oferta">Oferta</a></li>
+            <li><a onclick="showPage('sprawdz')" class="nav-link" data-page="sprawdz">Sprawdź się!</a></li>
             <li><a onclick="showPage('kontakt')" class="nav-link" data-page="kontakt">Kontakt</a></li>
         </ul>
     </div>
@@ -254,17 +274,25 @@
         </div>
     </section>
 
-    <!-- O SZKOLE -->
+    <!-- O SZKOLE (z mapką zamiast biura) -->
     <section class="page" id="page-oszkole">
         <div class="section">
             <h2 class="section-title">O szkole</h2>
             <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
             <div class="about-box">
                 <p><strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa od <strong>2005 roku</strong>. Oferujemy najlepsze kształcenie na prawo jazdy kat. B w Pułtusku i okolicach. Dbam o to, aby każdy kursant został wyszkolony na dobrego kierowcę.</p>
-                <div class="location-row">
-                    <div class="location-card"><h4>🏢 Biuro</h4><p>Winniczka, ul. Leśna 21</p><p style="font-size:0.8rem;color:#4f6f8f;">Zapisy, formalności</p></div>
-                    <div class="location-card"><h4>📚 Sala wykładowa</h4><p>Wjazd od ul. Harcerskiej, al. Tysiąclecia 12</p><p style="font-size:0.8rem;color:#4f6f8f;">Teoria, testy</p></div>
+                <!-- Mapa z pinezką sala wykładowa -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d777.8125541839249!2d21.0788918!3d52.7040565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471b3b8c5aa3a4c3%3A0x5f3a7b2c0e8f6d9a!2sal.%20Tysiąclecia%2012%2C%2006-100%20Pu%C5%82tusk!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
+                <div class="location-row">
+                    <div class="location-card"><h4>📚 Sala wykładowa</h4><p>Wjazd od ul. Harcerskiej, aleja Tysiąclecia 12, 06-100 Pułtusk</p><p style="font-size:0.8rem;color:#4f6f8f;">Teoria, testy, wykłady</p></div>
+                </div>
+            </div>
+            <!-- strzałki nawigacyjne -->
+            <div class="nav-arrows">
+                <button class="arrow-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('oferta')"><i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
     </section>
@@ -298,19 +326,46 @@
                     <div class="small-note">Do uzgodnienia indywidualnie</div>
                 </div>
             </div>
+            <div class="nav-arrows">
+                <button class="arrow-btn" onclick="showPage('oszkole')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('sprawdz')"><i class="fas fa-arrow-right"></i></button>
+            </div>
         </div>
     </section>
 
-    <!-- KONTAKT -->
+    <!-- SPRAWDŹ SIĘ! nowa sekcja z linkiem do testów -->
+    <section class="page" id="page-sprawdz">
+        <div class="section">
+            <h2 class="section-title">Sprawdź się!</h2>
+            <p class="section-sub">Przygotuj się do egzaminu z darmowymi testami</p>
+            <div class="quiz-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Darmowy test na prawo jazdy</h3>
+                <p>Rozwiąż pytania egzaminacyjne online i sprawdź swoją wiedzę przed podejściem do państwowego egzaminu. Ponad 3000 pytań!</p>
+                <a href="https://www.zdamyto.com/testy-na-prawo-jazdy#is_mobile" target="_blank" rel="noopener noreferrer" class="quiz-btn">
+                    <i class="fas fa-external-link-alt"></i> Rozpocznij test
+                </a>
+            </div>
+            <div class="nav-arrows">
+                <button class="arrow-btn" onclick="showPage('oferta')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('kontakt')"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT (zapis telefoniczny + zmieniony adres) -->
     <section class="page" id="page-kontakt">
         <div class="section">
             <h2 class="section-title">Kontakt i zapisy</h2>
             <p class="section-sub">Wypełnij formularz – oddzwonimy</p>
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <div class="info-row"><i class="fas fa-map-marker-alt"></i> al. Tysiąclecia 12, Pułtusk</div>
+                    <div class="info-row"><i class="fas fa-map-marker-alt"></i> Wjazd od ul. Harcerskiej, aleja Tysiąclecia 12, 06-100 Pułtusk</div>
                     <div class="info-row"><i class="fas fa-phone-alt"></i> <a href="tel:512103512" style="color:#0a2b3e;text-decoration:none;font-weight:600;">512 103 512</a></div>
                     <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
+                    <div class="phone-note">
+                        <i class="fas fa-phone-volume"></i> <strong>Zapisy tylko telefonicznie!</strong> Zadzwoń lub zostaw numer, oddzwonimy.
+                    </div>
                     <div class="hours-column">
                         <p><span>Pn – Pt:</span> <strong>8:00 – 16:00</strong></p>
                         <p><span>Sb – Nd:</span> <strong>10:00 – 14:00</strong></p>
@@ -333,6 +388,10 @@
                         <p id="formFeedback" style="margin-top:0.6rem;font-size:0.8rem;text-align:center;"></p>
                     </form>
                 </div>
+            </div>
+            <div class="nav-arrows">
+                <button class="arrow-btn" onclick="showPage('sprawdz')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('home')"><i class="fas fa-home"></i></button>
             </div>
         </div>
     </section>
