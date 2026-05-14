@@ -115,12 +115,35 @@
         /* === SEKCJE === */
         .section { padding:3rem 1.2rem; max-width:1000px; margin:0 auto; }
         .section-title { font-size:2rem; font-weight:800; color:var(--blue); margin-bottom:0.5rem; }
-        .section-sub { color:#2c5a7a; margin-bottom:2rem; font-size:1rem; }
+        .section-sub { color:#2c5a7a; margin-bottom:1rem; font-size:1rem; }
         .section-title:after { content:''; display:block; width:50px; height:4px; background:var(--accent); border-radius:4px; margin-top:0.5rem; }
+
+        /* strzałki nawigacyjne na górze sekcji */
+        .nav-arrows-top {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .arrow-btn {
+            background: white;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 60px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--accent);
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow-btn:hover { background: var(--accent); color: white; transform: scale(1.05); }
 
         .about-box { background:white; border-radius:1.2rem; padding:1.5rem; box-shadow:0 10px 30px -10px rgba(0,0,0,0.08); }
         .about-box p { font-size:0.95rem; line-height:1.7; margin-bottom:1.2rem; }
-        /* mapa zamiast lokalizacji biura */
         .map-container { margin-top:1rem; border-radius:1.2rem; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
         .map-container iframe { width:100%; height:300px; border:0; display:block; }
         .location-row { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem; }
@@ -159,12 +182,22 @@
         button[type="submit"] { background:var(--accent); width:100%; padding:0.9rem; border:none; font-weight:700; font-size:1rem; color:white; border-radius:50px; cursor:pointer; }
         .social-icons { margin-top:1rem; display:flex; gap:0.8rem; }
         .social-icons a { background:#eef2ff; width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; color:var(--accent); font-size:1.2rem; text-decoration:none; }
-        .phone-note { background:#fff7e0; border-left:4px solid #ffb74d; padding:0.6rem 1rem; border-radius:1rem; margin-top:0.8rem; font-size:0.85rem; color:#b26a00; display:flex; align-items:center; gap:8px; }
-
-        /* strzałki nawigacyjne */
-        .nav-arrows { display:flex; justify-content:center; gap:1rem; margin-top:2rem; margin-bottom:0.5rem; }
-        .arrow-btn { background:white; border:none; width:48px; height:48px; border-radius:60px; box-shadow:0 5px 15px rgba(0,0,0,0.1); cursor:pointer; font-size:1.4rem; color:var(--accent); transition:0.2s; display:inline-flex; align-items:center; justify-content:center; }
-        .arrow-btn:hover { background:var(--accent); color:white; transform:scale(1.05); }
+        /* nowy baner telefoniczny pod nagłówkiem kontaktu */
+        .phone-banner {
+            background: linear-gradient(135deg, #fff7e0 0%, #fff2cc 100%);
+            border-left: 5px solid #ff9800;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .phone-banner i { font-size: 1.8rem; color: #e67e22; }
+        .phone-banner strong { color: #b45f06; font-size: 1.05rem; }
+        .phone-banner span { color: #c97e00; font-size: 0.9rem; }
 
         footer { background:var(--blue); color:#cdedff; text-align:center; padding:1.2rem; font-size:0.8rem; }
 
@@ -186,6 +219,7 @@
             .section-title { font-size:2.5rem; }
             .nav-links a { font-size:1.05rem; }
             .map-container iframe { height:350px; }
+            .nav-arrows-top { margin-bottom: 2rem; }
         }
 
         /* ========== MOBILE ========== */
@@ -231,6 +265,7 @@
             .hero .subtitle { font-size:1.1rem; }
             .hero-car { font-size:4.5rem; }
             .btn { padding:1.1rem; font-size:1.05rem; }
+            .phone-banner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -274,14 +309,17 @@
         </div>
     </section>
 
-    <!-- O SZKOLE (z mapką zamiast biura) -->
+    <!-- O SZKOLE (z mapką i strzałkami na górze) -->
     <section class="page" id="page-oszkole">
         <div class="section">
+            <div class="nav-arrows-top">
+                <button class="arrow-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('oferta')"><i class="fas fa-arrow-right"></i></button>
+            </div>
             <h2 class="section-title">O szkole</h2>
             <p class="section-sub">Poznaj nasz ośrodek i lokalizacje</p>
             <div class="about-box">
                 <p><strong>Ośrodek Szkolenia Kandydatów na Kierowców Mariusz Kowalewski</strong> działa od <strong>2005 roku</strong>. Oferujemy najlepsze kształcenie na prawo jazdy kat. B w Pułtusku i okolicach. Dbam o to, aby każdy kursant został wyszkolony na dobrego kierowcę.</p>
-                <!-- Mapa z pinezką sala wykładowa -->
                 <div class="map-container">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d777.8125541839249!2d21.0788918!3d52.7040565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471b3b8c5aa3a4c3%3A0x5f3a7b2c0e8f6d9a!2sal.%20Tysiąclecia%2012%2C%2006-100%20Pu%C5%82tusk!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -289,17 +327,16 @@
                     <div class="location-card"><h4>📚 Sala wykładowa</h4><p>Wjazd od ul. Harcerskiej, aleja Tysiąclecia 12, 06-100 Pułtusk</p><p style="font-size:0.8rem;color:#4f6f8f;">Teoria, testy, wykłady</p></div>
                 </div>
             </div>
-            <!-- strzałki nawigacyjne -->
-            <div class="nav-arrows">
-                <button class="arrow-btn" onclick="showPage('home')"><i class="fas fa-arrow-left"></i></button>
-                <button class="arrow-btn" onclick="showPage('oferta')"><i class="fas fa-arrow-right"></i></button>
-            </div>
         </div>
     </section>
 
     <!-- OFERTA -->
     <section class="page" id="page-oferta">
         <div class="section">
+            <div class="nav-arrows-top">
+                <button class="arrow-btn" onclick="showPage('oszkole')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('sprawdz')"><i class="fas fa-arrow-right"></i></button>
+            </div>
             <h2 class="section-title">Nasza oferta</h2>
             <p class="section-sub">Kompleksowy kurs prawa jazdy kat. B</p>
             <div class="offers-grid">
@@ -326,16 +363,16 @@
                     <div class="small-note">Do uzgodnienia indywidualnie</div>
                 </div>
             </div>
-            <div class="nav-arrows">
-                <button class="arrow-btn" onclick="showPage('oszkole')"><i class="fas fa-arrow-left"></i></button>
-                <button class="arrow-btn" onclick="showPage('sprawdz')"><i class="fas fa-arrow-right"></i></button>
-            </div>
         </div>
     </section>
 
-    <!-- SPRAWDŹ SIĘ! nowa sekcja z linkiem do testów -->
+    <!-- SPRAWDŹ SIĘ! -->
     <section class="page" id="page-sprawdz">
         <div class="section">
+            <div class="nav-arrows-top">
+                <button class="arrow-btn" onclick="showPage('oferta')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('kontakt')"><i class="fas fa-arrow-right"></i></button>
+            </div>
             <h2 class="section-title">Sprawdź się!</h2>
             <p class="section-sub">Przygotuj się do egzaminu z darmowymi testami</p>
             <div class="quiz-card">
@@ -346,26 +383,33 @@
                     <i class="fas fa-external-link-alt"></i> Rozpocznij test
                 </a>
             </div>
-            <div class="nav-arrows">
-                <button class="arrow-btn" onclick="showPage('oferta')"><i class="fas fa-arrow-left"></i></button>
-                <button class="arrow-btn" onclick="showPage('kontakt')"><i class="fas fa-arrow-right"></i></button>
-            </div>
         </div>
     </section>
 
-    <!-- KONTAKT (zapis telefoniczny + zmieniony adres) -->
+    <!-- KONTAKT (zapis telefoniczny pod nagłówkiem) -->
     <section class="page" id="page-kontakt">
         <div class="section">
+            <div class="nav-arrows-top">
+                <button class="arrow-btn" onclick="showPage('sprawdz')"><i class="fas fa-arrow-left"></i></button>
+                <button class="arrow-btn" onclick="showPage('home')"><i class="fas fa-home"></i></button>
+            </div>
             <h2 class="section-title">Kontakt i zapisy</h2>
             <p class="section-sub">Wypełnij formularz – oddzwonimy</p>
+            
+            <!-- Baner z zapisami telefonicznymi – przeniesiony pod tytuł -->
+            <div class="phone-banner">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <strong>📞 Zapisy tylko telefonicznie!</strong><br>
+                    <span>Zadzwoń lub zostaw numer, oddzwonimy.</span>
+                </div>
+            </div>
+
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <div class="info-row"><i class="fas fa-map-marker-alt"></i> Wjazd od ul. Harcerskiej, aleja Tysiąclecia 12, 06-100 Pułtusk</div>
                     <div class="info-row"><i class="fas fa-phone-alt"></i> <a href="tel:512103512" style="color:#0a2b3e;text-decoration:none;font-weight:600;">512 103 512</a></div>
                     <div class="info-row"><i class="fas fa-envelope"></i> prawkopultusk@gmail.com</div>
-                    <div class="phone-note">
-                        <i class="fas fa-phone-volume"></i> <strong>Zapisy tylko telefonicznie!</strong> Zadzwoń lub zostaw numer, oddzwonimy.
-                    </div>
                     <div class="hours-column">
                         <p><span>Pn – Pt:</span> <strong>8:00 – 16:00</strong></p>
                         <p><span>Sb – Nd:</span> <strong>10:00 – 14:00</strong></p>
@@ -388,10 +432,6 @@
                         <p id="formFeedback" style="margin-top:0.6rem;font-size:0.8rem;text-align:center;"></p>
                     </form>
                 </div>
-            </div>
-            <div class="nav-arrows">
-                <button class="arrow-btn" onclick="showPage('sprawdz')"><i class="fas fa-arrow-left"></i></button>
-                <button class="arrow-btn" onclick="showPage('home')"><i class="fas fa-home"></i></button>
             </div>
         </div>
     </section>
